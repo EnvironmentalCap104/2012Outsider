@@ -14659,56 +14659,407 @@ campaignTrail_temp.jet_data = [{
             "defaultValue": 0
         }
     },
-    "cyoa_enabled": true,
-    "cyoa_data": {},
-    "cyoa_variable_effects": {
-        "1449": {
-            "id": 1449,
-            "answer": 165,
-            "variable": "Primary",
-            "operation": "add",
-            "amount": 2
-        },
-        "1450": {
-            "id": 1450,
-            "answer": 166,
-            "variable": "Primary",
-            "operation": "add",
-            "amount": 1
-        },
-        "1452": {
-            "id": 1452,
-            "answer": 97,
-            "variable": "Primary",
-            "operation": "add",
-            "amount": 1
-        },
-        "1460": {
-            "id": 1460,
-            "answer": 98,
-            "variable": "Primary",
-            "operation": "add",
-            "amount": 2
-        },
-        "1466": {
-            "id": 1466,
-            "answer": 396,
-            "variable": "Primary",
-            "operation": "add",
-            "amount": 2
-        },
-        "1467": {
-            "id": 1467,
-            "answer": 397,
-            "variable": "Primary",
-            "operation": "add",
-            "amount": 3
-        }
-    },
-    "cyoa_question_swaps": {},
-    "cyoa_answer_swaps": {},
-    "cyoa_campaign_data_enabled": false,
-    "cyoa_campaign_data_stats": {}
 }
 ]
 
+campaignTrail_temp.cyoa = true;
+
+// Scoring for the various systems features in this mod
+var primary = 0;
+var TrumpRunning = 0; // 0 means Trump is not running, 1 means Trump is running
+
+// State Variables for Achievements
+var MNwin = 0
+
+
+ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1]
+
+function ctsAchievement(achievement, difficultyChecker = true) {
+    if ((difficultyChecker && campaignTrail_temp.difficulty_level_multiplier <= 1) || !difficultyChecker)
+        if (campaignTrail_temp.CTS) {
+            unlockAchievement(achievement);
+        }
+}
+
+/// spaghetti code right here
+/// I COULD just check for the vps last name but I like having a variable in the same place and I'm used to it atp
+var vpMap = {
+    /// speaking of spaghetti code lmaooooo
+    /// I have no idea why the vp code of all things is giving me so much trouble, starting to think that making a variable for it when I first started this fucked me over idk....
+    /// Maybe I should have just made a function! Anyways this map is a graveyard because it all got moved around so oh well, here because I don't want anything to break
+
+}
+
+// Initial variable holding the image URL
+let imgUrl = "https://i.imgur.com/0mT1MWo.png";
+
+const customStyling = document.createElement("style");
+
+// Function to update the style based on the image URL
+function updateStyling(imgUrl) {
+    customStyling.innerHTML = `
+    #campaign_sign {
+  width: 100%;
+  height: 92px;                 /* stays inside the UI slot */
+  box-sizing: border-box;
+  border: .01em solid #c9c9c9;
+  margin: 0 auto;
+  overflow: hidden;
+
+  /* no crop, keeps 800x395 ratio inside the 92px slot */
+  background: #f8f8f8 url("${imgUrl}") center/contain no-repeat;
+}
+
+/* kill the injected last-name text */
+#campaign_sign p{
+  display: none !important;
+
+    }
+    `;
+}
+
+document.head.appendChild(customStyling);
+
+// Set the initial styling
+updateStyling(imgUrl);
+
+// Example of changing the image URL based on a variable
+function changeImage(newImgUrl) {
+    imgUrl = newImgUrl;
+    console.log("Imgur Success")
+    updateStyling(imgUrl);  // Update the styling with the new image URL
+}
+
+//This is how I swap out questions
+function tunnel(new_q) {
+    let e = campaignTrail_temp;
+    if (!Array.isArray(e.questions_json)) {
+        console.error("e.questions_json is not an array or is undefined");
+        return undefined;
+    }
+    let pkArray = e.questions_json.map(f => {
+        if (f && "pk" in f) {
+            return f.pk;
+        } else {
+            console.error("An element in questions_json is missing the pk property", f);
+            return undefined;
+        }
+    });
+    let index = pkArray.indexOf(new_q);
+    if (index === -1) {
+        console.error(`pk value ${new_q} not found in questions_json`);
+        return undefined;
+    }
+    return e.questions_json[index];
+}
+
+// If you're mixing and matching CYOA functions, remember - you only need ONE cyoa function. Just put everything inside of one of these
+cyoAdventure = function (a) {
+    ans = campaignTrail_temp.player_answers[campaignTrail_temp.player_answers.length - 1];
+    let e = campaignTrail_temp;
+
+	// Primary Variables
+	if ([97, 166].includes(ans)) {
+        primary += 1;
+        console.log("Primary + 1\nPrimary:", primary);
+    }
+    	if ([165, 98, 396].includes(ans)) {
+        primary += 2;
+        console.log("Primary + 2\nPrimary:", primary);
+    }	
+    	if ([397].includes(ans)) {
+        primary += 3;
+        console.log("Primary + 3\nPrimary:", primary);
+
+	// Trump proves the pundits right
+	if (ans === 4419) {
+        campaignTrail_temp.questions_json[6] = tunnel(20001)
+		}
+    if (campaignTrail_temp.question_number == 6 && ans != 21003) {        
+        window.setTimeout(e.vpSwitcher, 20)
+    }
+
+		
+	// Trump proves the pundits right
+    	if (ans === 21000) {
+        campaignTrail_temp.candidate_json[1]["fields"].first_name = "Mitt";
+        campaignTrail_temp.candidate_json[1]["fields"].last_name = "Romney";
+        campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Mitt_Romney_by_Gage_Skidmore_8.jpg/250px-Mitt_Romney_by_Gage_Skidmore_8.jpg";
+        campaignTrail_temp.question_number = 31;
+		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#FF0000";
+    }
+	if (ans === 21001) {
+        campaignTrail_temp.candidate_json[1]["fields"].first_name = "Sarah";
+        campaignTrail_temp.candidate_json[1]["fields"].last_name = "Palin";
+        campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://media.ktoo.org/2013/05/sarah-palin-gage-skidmore.jpg";
+        campaignTrail_temp.question_number = 31;
+		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#fe2a2a";
+    }
+    	if (ans === 21002) {
+        campaignTrail_temp.candidate_json[1]["fields"].first_name = "Chris";
+        campaignTrail_temp.candidate_json[1]["fields"].last_name = "Christie";
+        campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Chris_Christie_2015_crop.jpg/250px-Chris_Christie_2015_crop.jpg";
+        campaignTrail_temp.question_number = 31;
+		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#bf3131";
+    }
+
+    }		
+	if ([391, 392].includes(ans)) {
+        e.election_json[0].fields.has_visits = 0;
+    }
+    if ([25, 26, 27, 28].includes(ans)) {
+        e.election_json[0].fields.has_visits = 1
+    }
+
+// Achievements
+
+
+// Lose the Primary in Q7
+	
+    if (ans === 21003) {
+        campaignTrail_temp.candidate_json[1]["fields"].first_name = "Mitt";
+        campaignTrail_temp.candidate_json[1]["fields"].last_name = "Romney";
+        campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Mitt_Romney_by_Gage_Skidmore_8.jpg/250px-Mitt_Romney_by_Gage_Skidmore_8.jpg";
+        campaignTrail_temp.question_number = 31;
+		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#FF0000";
+    }
+}
+
+
+function onGameWindowChangeCandidates() {
+    const resultsTableHolder = document.getElementById("overall_details_container");
+
+    if(!resultsTableHolder || resultsTableHolder.classList.contains("done")) {
+        return;
+    }
+
+    resultsTableHolder.classList.add("done");
+
+    const resultsTable = resultsTableHolder.childNodes[3].childNodes[3].children[0];
+    
+    for(let i = 0; i < resultsTable.children.length; i++) {
+        const row = resultsTable.children[i];
+        let name = row.firstChild.innerText;
+        row.insertCell(1);
+        if(name) {
+            name = name.replaceAll("-", "").trim();
+            console.log("name is:" + name)
+        }
+
+        if(i == 0) {
+            row.children[1].innerHTML = `<span style="font-weight:bold">Running Mate<span>`;
+        }
+        else {
+            row.children[1].innerHTML = vpTable[name];
+        }
+    }
+
+    
+    const resultsTableHistorical = resultsTableHolder.childNodes[5].childNodes[3].children[0];
+    
+    for(let i = 0; i < resultsTableHistorical.children.length; i++) {
+        const row = resultsTableHistorical.children[i];
+        let name = row.childNodes[1].innerText;
+        row.insertCell(1);
+        if(name) {
+            name = name.replaceAll("-", "").trim();
+        }
+
+        if(i == 0) {
+            row.children[1].innerHTML = `<span style="font-weight:bold">Running Mate<span>`;
+        }
+        else {
+            row.children[1].innerHTML = vpTableHistorical[name];
+        }
+    }
+}
+		
+var changeGameDisp = (hide) => {
+    disp = "";
+    if (hide) {
+        disp = "none";
+    }
+    Array.from(gameWindow.children).forEach(f => {
+        if (!f.classList.contains("game_header") && (f.id != "main_content_area" || !$("#campaign_sign")[0]))
+            f.style.display = disp
+    });
+};
+    let vp_html = `
+        <div id="running_mate_form">
+            <form name="running mate">
+                <p></p>
+                <h3>Please select your running mate:</h3> 
+                <select name="running_mate_id" id="running_mate_id">
+                    ${running_mate_options}
+                </select>
+                <p></p>
+            </form>
+        </div>
+        <div class="person_description_window" id="running_mate_description_window">
+            <div class="person_image" id="running_mate_image"> <img src="${pot_run_mat[0].fields.image_url}" width="210" height="250"> </div>
+            <div class="person_summary" id="running_mate_summary">
+                <ul>
+                    <li>Name: ${pot_run_mat[0].fields.first_name} ${pot_run_mat[0].fields.last_name}</li>
+                    <li>Party: ${pot_run_mat[0].fields.party}</li>
+                    <li>Home State: ${pot_run_mat[0].fields.state}</li>
+                </ul>
+                ${pot_run_mat[0].fields.description_as_running_mate}
+            </div>
+        </div>
+        <p> <button class="person_button" id="running_mate_id_button">Continue</button> </p>
+    `
+
+    let vp_screen = document.createElement("div");
+    vp_screen.classList.add("inner_window_w_desc");
+    vp_screen.id = "inner_window_4";
+    vp_screen.innerHTML = vp_html;
+
+    changeGameDisp(true);
+
+    gameWindow.appendChild(vp_screen);
+
+    // now we make the stuff do stuff!
+
+    $("#running_mate_id").change((_e) => {
+        _e.preventDefault()
+
+        let value = Number($("#running_mate_id").val());
+        let i = pot_run_mat.findIndex(f => f.pk === value);
+        if (i < 0) i = 0;
+
+        let screen_html = `
+            <div class="person_image" id="running_mate_image"> <img src="${pot_run_mat[i].fields.image_url}" width="210" height="250"> </div>
+            <div class="person_summary" id="running_mate_summary">
+                <ul>
+                    <li>Name: ${pot_run_mat[i].fields.first_name} ${pot_run_mat[i].fields.last_name}</li>
+                    <li>Party: ${pot_run_mat[i].fields.party}</li>
+                    <li>Home State: ${pot_run_mat[i].fields.state}</li>
+                </ul>
+                ${pot_run_mat[i].fields.description_as_running_mate}
+            </div>
+        `
+
+        $("#running_mate_description_window").html(screen_html);
+
+    });
+    // VP selected!
+
+    $("#running_mate_id_button").click((_e) => {
+        _e.preventDefault();
+
+        let value = Number($("#running_mate_id").val());
+        let i = pot_run_mat.findIndex(f => f.pk === value);
+        if (i < 0) i = 0;
+
+        e.running_mate_last_name = pot_run_mat[i].fields.last_name;
+        e.running_mate_image_url = pot_run_mat[i].fields.image_url;
+        e.selected_running_mate = pot_run_mat[i];
+
+        if ($("#campaign_sign")[0]) {
+            $("#campaign_sign").html(`<p>${e.candidate_last_name}</p><p>${e.running_mate_last_name}</p>`);
+            $("#running_mate_pic").attr("src", e.running_mate_image_url)
+        }
+        if (e.running_mate_last_name === "Christie") {
+            console.log("Christie, 31")
+        }
+
+        if (e.running_mate_last_name === "Pence") {
+            console.log(campaignTrail_temp.questions_json[7])
+            console.log("Pence, 39");
+            campaignTrail_temp.questions_json[7] = tunnel(20007)
+            campaignTrail_temp.questions_json[13] = tunnel(20012)
+            campaignTrail_temp.questions_json[24] = tunnel(20017)
+            campaignTrail_temp.questions_json[28] = tunnel(20002)
+        }
+
+        if (e.running_mate_last_name === "Palin") {
+            console.log(campaignTrail_temp.questions_json[7])
+            console.log("Palin, 37")
+            campaignTrail_temp.questions_json[7] = tunnel(20008)
+            campaignTrail_temp.questions_json[13] = tunnel(20013)
+            campaignTrail_temp.questions_json[24] = tunnel(20018)
+            campaignTrail_temp.questions_json[28] = tunnel(20003)
+        }
+        if (e.running_mate_last_name === "Gingrich") {
+            console.log(campaignTrail_temp.questions_json[7])
+            changeImage("https://i.imgur.com/MrR7vqo.png");
+            console.log("Gingrich, 38")
+            campaignTrail_temp.questions_json[7] = tunnel(20009)
+            campaignTrail_temp.questions_json[13] = tunnel(20014)
+            campaignTrail_temp.questions_json[24] = tunnel(20019)
+            campaignTrail_temp.questions_json[28] = tunnel(20004)
+        }
+
+        if (e.running_mate_last_name === "Paul") {
+            console.log(campaignTrail_temp.questions_json[7])
+            changeImage("https://i.imgur.com/0Xzg34P.png");
+            console.log("Paul, 32")
+            campaignTrail_temp.questions_json[7] = tunnel(20010)
+            campaignTrail_temp.questions_json[13] = tunnel(20015)
+            campaignTrail_temp.questions_json[24] = tunnel(20020)
+            campaignTrail_temp.questions_json[28] = tunnel(20005)
+        }
+
+        if (e.running_mate_last_name === "Rubio") {
+            console.log(campaignTrail_temp.questions_json[7])
+            changeImage("https://i.imgur.com/3Xed75P.png");
+            console.log("Rubio, 33")
+            campaignTrail_temp.questions_json[7] = tunnel(20011)
+            campaignTrail_temp.questions_json[13] = tunnel(20016)
+            campaignTrail_temp.questions_json[24] = tunnel(20021)
+            campaignTrail_temp.questions_json[28] = tunnel(20006)
+        }
+
+  function campaignSummary() {
+    const stateNamesMap = getStateNamesMap();  // Get map of state PKs to names
+    const candidateNamesMap = getCandidateNamesMap();  // Get map of candidate PKs to names
+    const visits = countVisitsPerState();  // Get visit counts
+    const votes = getVotePercentages();  // Get vote percentages
+  
+    for (const statePK in votes) {
+      const stateName = stateNamesMap[statePK] || `Unknown State (${statePK})`;  // Fallback if state name not found
+      console.log(`State: ${statePK}: ${stateName}`);
+      const visitCount = visits[statePK] || 0;  // Get the number of visits to the state
+      console.log(`Number of Visits: ${visitCount}`);
+      console.log(`Vote Percentages:`);
+  
+      let TrumpVotes = 0;
+      let maxVotes = 0;
+      let candidateMax = "";
+  
+      votes[statePK].forEach((voteData) => {
+        const candidateName = candidateNamesMap[voteData.candidate] || `Candidate ${voteData.candidate}`;
+        console.log(`  ${candidateName}: ${voteData.percentage.toFixed(2)}%`);
+  
+        if (candidateName === "Trump") {
+          TrumpVotes = voteData.percentage;  // Track MLK's votes
+        }
+
+        if (voteData.percentage > maxVotes) {
+          maxVotes = voteData.percentage;
+          candidateMax = candidateName;
+        }
+      });
+			
+      // State Checks
+      if (stateName === "Texas" && candidateMax === "Trump") {
+        TXwin = 1;  // Trump won Texas
+        console.log(`TXwin point assigned: MLK won Texas!`);
+      }
+      if (stateName === "Minnesota" && candidateMax === "Trump") {
+        MNwin = 1;  // Trump won Minnesota
+        console.log(`MNwin point assigned: Trump won Minnesota!`);
+      }
+}
+}
+			
+var element = document.getElementById('controlElement');
+if (!element) {
+    let singleObserver = new MutationObserver(handleMutations);
+    singleObserver.observe(document.documentElement, { childList: true, subtree: true });
+    var controlElement = document.createElement('div');
+    controlElement.style.display = 'none';
+    controlElement.id = 'controlElement';
+    document.body.appendChild(controlElement);
+}
+}
