@@ -14545,46 +14545,6 @@ var vpMap = {
 
 }
 
-// Initial variable holding the image URL
-let imgUrl = "https://i.imgur.com/0mT1MWo.png";
-
-const customStyling = document.createElement("style");
-
-// Function to update the style based on the image URL
-function updateStyling(imgUrl) {
-    customStyling.innerHTML = `
-    #campaign_sign {
-  width: 100%;
-  height: 92px;                 /* stays inside the UI slot */
-  box-sizing: border-box;
-  border: .01em solid #c9c9c9;
-  margin: 0 auto;
-  overflow: hidden;
-
-  /* no crop, keeps 800x395 ratio inside the 92px slot */
-  background: #f8f8f8 url("${imgUrl}") center/contain no-repeat;
-}
-
-/* kill the injected last-name text */
-#campaign_sign p{
-  display: none !important;
-
-    }
-    `;
-}
-
-document.head.appendChild(customStyling);
-
-// Set the initial styling
-updateStyling(imgUrl);
-
-// Example of changing the image URL based on a variable
-function changeImage(newImgUrl) {
-    imgUrl = newImgUrl;
-    console.log("Imgur Success")
-    updateStyling(imgUrl);  // Update the styling with the new image URL
-}
-
 //This is how I swap out questions
 function tunnel(new_q) {
     let e = campaignTrail_temp;
@@ -14682,68 +14642,27 @@ cyoAdventure = function (a) {
         campaignTrail_temp.question_number = 31;
 		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#FF0000";
     }
-
-
-
-function onGameWindowChangeCandidates() {
-    const resultsTableHolder = document.getElementById("overall_details_container");
-
-    if(!resultsTableHolder || resultsTableHolder.classList.contains("done")) {
-        return;
-    }
-
-    resultsTableHolder.classList.add("done");
-
-    const resultsTable = resultsTableHolder.childNodes[3].childNodes[3].children[0];
-    
-    for(let i = 0; i < resultsTable.children.length; i++) {
-        const row = resultsTable.children[i];
-        let name = row.firstChild.innerText;
-        row.insertCell(1);
-        if(name) {
-            name = name.replaceAll("-", "").trim();
-            console.log("name is:" + name)
-        }
-
-        if(i == 0) {
-            row.children[1].innerHTML = `<span style="font-weight:bold">Running Mate<span>`;
-        }
-        else {
-            row.children[1].innerHTML = vpTable[name];
-        }
-    
-
-    
-    const resultsTableHistorical = resultsTableHolder.childNodes[5].childNodes[3].children[0];
-    
-    for(let i = 0; i < resultsTableHistorical.children.length; i++) {
-        const row = resultsTableHistorical.children[i];
-        let name = row.childNodes[1].innerText;
-        row.insertCell(1);
-        if(name) {
-            name = name.replaceAll("-", "").trim();
-        }
-
-        if(i == 0) {
-            row.children[1].innerHTML = `<span style="font-weight:bold">Running Mate<span>`;
-        }
-        else {
-            row.children[1].innerHTML = vpTableHistorical[name];
-        }
-    }
 }
 
-		
 var changeGameDisp = (hide) => {
     disp = "";
     if (hide) {
-        disp = "none";
+      disp = "none";
     }
-    Array.from(gameWindow.children).forEach(f => {
-        if (!f.classList.contains("game_header") && (f.id != "main_content_area" || !$("#campaign_sign")[0]))
+    Array.from(gameWindow.children).forEach(f=>{
+        if(!f.classList.contains("game_header") && (f.id != "main_content_area" || !$("#campaign_sign")[0])) 
             f.style.display = disp
     });
-};
+  };
+  
+e.vpSwitcher = () => {
+    let potential_running_mate_pks = e.running_mate_json.filter(f=>f.fields.candidate == e.candidate_id).map(f=>f.fields.running_mate);
+    let pot_run_mat = potential_running_mate_pks.map(f=>e.candidate_json.find(_f=>_f.pk===f));
+    let running_mate_options = ``;
+    pot_run_mat.forEach(f=> {
+        running_mate_options += `<option value="${f.pk}">${f.fields.first_name} ${f.fields.last_name}</option>\n`
+    });
+
     let vp_html = `
         <div id="running_mate_form">
             <form name="running mate">
@@ -14834,17 +14753,16 @@ var changeGameDisp = (hide) => {
 
         if (e.running_mate_last_name === "Palin") {
             console.log(campaignTrail_temp.questions_json[7])
-            console.log("Palin, 37")
             campaignTrail_temp.questions_json[7] = tunnel(20008)
+            console.log("Palin, 37")
             campaignTrail_temp.questions_json[13] = tunnel(20013)
             campaignTrail_temp.questions_json[24] = tunnel(20018)
             campaignTrail_temp.questions_json[28] = tunnel(20003)
         }
         if (e.running_mate_last_name === "Gingrich") {
             console.log(campaignTrail_temp.questions_json[7])
-            changeImage("https://i.imgur.com/MrR7vqo.png");
-            console.log("Gingrich, 38")
             campaignTrail_temp.questions_json[7] = tunnel(20009)
+            console.log("Gingrich, 38")
             campaignTrail_temp.questions_json[13] = tunnel(20014)
             campaignTrail_temp.questions_json[24] = tunnel(20019)
             campaignTrail_temp.questions_json[28] = tunnel(20004)
@@ -14852,7 +14770,6 @@ var changeGameDisp = (hide) => {
 
         if (e.running_mate_last_name === "Paul") {
             console.log(campaignTrail_temp.questions_json[7])
-            changeImage("https://i.imgur.com/0Xzg34P.png");
             console.log("Paul, 32")
             campaignTrail_temp.questions_json[7] = tunnel(20010)
             campaignTrail_temp.questions_json[13] = tunnel(20015)
@@ -14862,60 +14779,18 @@ var changeGameDisp = (hide) => {
 
         if (e.running_mate_last_name === "Rubio") {
             console.log(campaignTrail_temp.questions_json[7])
-            changeImage("https://i.imgur.com/3Xed75P.png");
             console.log("Rubio, 33")
             campaignTrail_temp.questions_json[7] = tunnel(20011)
             campaignTrail_temp.questions_json[13] = tunnel(20016)
             campaignTrail_temp.questions_json[24] = tunnel(20021)
             campaignTrail_temp.questions_json[28] = tunnel(20006)
         }
-		})
+        $("#inner_window_4").remove();
+        changeGameDisp(false);
+		
+		questionHTML(); 
+    })
+}			
 
-  function campaignSummary() {
-    const stateNamesMap = getStateNamesMap();  // Get map of state PKs to names
-    const candidateNamesMap = getCandidateNamesMap();  // Get map of candidate PKs to names
-    const visits = countVisitsPerState();  // Get visit counts
-    const votes = getVotePercentages();  // Get vote percentages
-  
-    for (const statePK in votes) {
-      const stateName = stateNamesMap[statePK] || `Unknown State (${statePK})`;  // Fallback if state name not found
-      console.log(`State: ${statePK}: ${stateName}`);
-      const visitCount = visits[statePK] || 0;  // Get the number of visits to the state
-      console.log(`Number of Visits: ${visitCount}`);
-      console.log(`Vote Percentages:`);
-  
-      let TrumpVotes = 0;
-      let maxVotes = 0;
-      let candidateMax = "";
-  
-      votes[statePK].forEach((voteData) => {
-        const candidateName = candidateNamesMap[voteData.candidate] || `Candidate ${voteData.candidate}`;
-        console.log(`  ${candidateName}: ${voteData.percentage.toFixed(2)}%`);
-  
-        if (candidateName === "Trump") {
-          TrumpVotes = voteData.percentage;  // Track Trump's votes
-        }
 
-        if (voteData.percentage > maxVotes) {
-          maxVotes = voteData.percentage;
-          candidateMax = candidateName;
-        }
-      });
-			
-      // State Checks
-      if (stateName === "Minnesota" && candidateMax === "Trump") {
-        MNwin = 1;  // Trump won Minnesota
-        console.log(`MNwin point assigned: Trump won Minnesota!`);
-      }
-}
-}
-			
-var element = document.getElementById('controlElement');
-if (!element) {
-    let singleObserver = new MutationObserver(handleMutations);
-    singleObserver.observe(document.documentElement, { childList: true, subtree: true });
-    var controlElement = document.createElement('div');
-    controlElement.style.display = 'none';
-    controlElement.id = 'controlElement';
-    document.body.appendChild(controlElement);
-}
+		
