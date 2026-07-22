@@ -14792,5 +14792,310 @@ e.vpSwitcher = () => {
     })
 }			
 
+			// Endings
+campaignTrail_temp.multiple_endings = true;
+endingPicker = (out, totv, aa, quickstats) => {
+	
+	// End of Game Achievements
+	const playerEV = quickstats[0];
+	const playerPVPercent = quickstats[1];
+	
+	const stateAbbrs = new Map(e.states_json.map(s => [s.pk, s.fields.abbr]));
+    const stateWinners = new Map(
+        e.final_state_results.map(s => [stateAbbrs.get(s.state), s.result[0].candidate])
+    );
+    const stcount = (stateList, cid) => stateList.every(stAbbr => stateWinners.get(stAbbr) === cid);
+	const candId = 17; // the player PK
+	
+    if (playerEV >= 270 && e.running_mate_last_name === "Christie") 
+            ctsAchievement("Jersey Boys");    
+    if (playerEV >= 270 && e.running_mate_last_name === "Pence") 
+            ctsAchievement("Truly Early");
+    if (playerEV >= 270 && e.running_mate_last_name === "Palin") 
+            ctsAchievement("Mama Grizzlies");
+    if (playerEV >= 270 && e.running_mate_last_name === "Gingrich") 
+            ctsAchievement("Contract for America");
+    if (playerEV >= 270 && e.running_mate_last_name === "Paul") 
+            ctsAchievement("Burnin' the System Down");
+    if (playerEV >= 270 && e.running_mate_last_name === "Rubio") 
+            ctsAchievement("Viva Trump");    
+    if (playerEV >= 270 && e.player_answers.some(a => a == 1321))
+            ctsAchievement("John McWhoCares");  		
+    if (playerEV >= 270 && e.player_answers.includes(391, 1508))
+            ctsAchievement("John McWhoCares");  					
+    if (stateWinners.get('MN') === candId)
+            ctsAchievement("Obamna Soda");	
+			
+    function swapEndingPlaylist(targetPlaylistIndex) {
+    try {
+    if (campaignTrail_temp._endingPlaylistSwapped1996) return;
+        const fn = (campaignTrail_temp && typeof campaignTrail_temp.setSoundtrack === 'function')
+         ? campaignTrail_temp.setSoundtrack
+         : (typeof window !== 'undefined' && typeof window.setSoundtrack === 'function')
+         ? window.setSoundtrack
+         : null;
+         if (!fn) return;
+            if (fn(targetPlaylistIndex, { autoplay: true })) {
+                campaignTrail_temp._endingPlaylistSwapped1996 = true;
+            }
+        } catch (_err) { console.error("playlist shit broke gng"); }
+    }			
+			
+    function setImage(url) {
+        if(url == '' || url == null) return;
+        let interval = setInterval(function () {
+            img = document.getElementsByClassName("person_image")[0];
+            if (img != null) {
+                img.src = url;
+                img.width = 240;
+                clearInterval(interval);
+            }
+        }, 50);
+    }
 
+    if (TrumpRunning == 1) { // Trump Runs
+        if(aa[0].electoral_votes < 270) { // Deadlock
+		    ctsAchievement("Political Apprentice");			
+            swapEndingPlaylist(1);
+            setImage("https://i.postimg.cc/7LM8QYc2/Screenshot-2026-06-30-112740.png");
+            return `    <div class="ending-slide">
+            <h3 class="endingtitle">i>THE POLITICAL APPRENTICE</i></h3>
+            <h2 class="endingdate">JANUARY 4, 2013</h2>
+            <p>Donald, this ain’t NBC okay? Politics is no reality TV. It is time to figure out who will be the next President of the United States. No candidate reached 270 electoral votes, the magic number to get elected. Therefore, we have a different process and Congress decides.</p>
+            <p>Your task is to get the House of Representatives to appoint you President for the next four years, and you seem to be in a good place for success. Each state gets one collective vote, and Republicans have the majority in the House. Anybody who was on the fence in the Republican establishment needs to be convinced to vote for you. If you can’t convince establishmentarian Republican congressmen to bend the knee for you, then you’re fired.</p>
+            <p>That was only the first task, okay? Your second is to convince the Democrat-led Senate to push your running-mate into the Vice Presidency. And unfortunately, Democrats hate you. With a burning passion. If so, Joe Biden gets four more years. And maybe you two will become good, good friends even though your ideas send chills down his spine. They could even appoint somebody that Democrats can get behind, but all they want to do is hold onto power. </p>
+            <p>But all around, this is an extraordinary circumstance that hasn’t been seen in nearly two centuries. But you have a chance to make your case, but so does the President. I wish both of you luck on this great, great endeavor. If successful, you will Make America Great Again. If not, we have four more years of bad deals, bad wars, and bad policies.</p>		
+            </div>
+            `;    	
+		} else if(quickstats[0] == 0 && aa[0].electoral_votes > 269 && aa[0].candidate == 16) { // 0 EVs			
+            swapEndingPlaylist(2);			
+            setImage("https://i.postimg.cc/nzRW6s1p/Screenshot-2026-06-30-132425.png");
+            return `    <div class="ending-slide">
+            <h3 class="endingtitle">NOVEMBER 7, 2012</h3>
+            <h2 class="endingdate">PALM BEACH, FLORIDA</h2>
+            <p>MELANIA: What the hell did I watch last night? How could you ever let me down like that?</p>
+            <p>DONALD: I did not let you down, what are you talking about? They rigged it. No way I didn’t get any electoral votes. Believe me, I won this election in a landslide.</p>
+            <p>MELANIA: You did not. You aren’t a winner. You are a loser.</p>
+            <p>DONALD: What the fuck are you talking about, Melania?</p>
+            <p>MELANIA: You are the biggest loser. You lose so badly that you want to cheat to win. Do you know how many bankruptcies you have had?</p>
+            <p>DONALD: I did not have any bankruptcies, and if I did, I did absolutely nothing wrong, okay?</p>
+            <p>MELANIA: You would have to be doing something wrong to go bankrupt. For god’s sake babe, you have gone bankrupt at casinos. Who goes bankrupt at a casino?</p>
+            <p>DONALD: I have the greatest casinos in the entire world, and I have even planned to build one at the Beautiful National Harbor, not too far from the White House.</p>
+            <p>MELANIA: You are not building one there because you are not moving there. You did not earn the job. You are a money guy and a failure. You are failing on The Apprentice, you failed your businesses, and you failed the only chance you could ever redeem yourself for all of your bullshit. I am even shocked you won the Republican nomination to begin with.</p>
+            <p>DONALD: The people are truly sick and tired of what has been happening in our country, and they have blamed the radical Dumocrats and the Republican establishment has just let it happen for far too long. Believe me, I was supposed to be their voice.</p>
+            <p>MELANIA: To be honest with you babe, I only loved you because you were rich as fuck. You cheated on your last wife for me, and I have loved you only for your money. You are a sick human being Donald, and you have disappointed me during this stupid campaign and your stupid deals. And quite frankly, your bullshit about Obama being born in Kenya hits close to home for me, because I am a fucking immigrant. You are disparaging people like your own wife. Why should I be married to someone like you?</p>
+            <p>DONALD: You are white, okay? I don’t know how white people should be offended by my rhetoric. It’s the people coming from the Southern border and from terrorist countries we should be concerned about.</p>
+            <p>MELANIA: I am not buying it. But you know what I am buying? Divorce papers.</p>
+            <p>DONALD: You can’t file a divorce on me. What about Barron?</p>
+            <p>MELANIA: I got Barron. And yes, I can file a divorce. I am done with you Donald, I should’ve known how terrible of a human being you were. You are a womanizer. You are a con-man. I don’t want to be married to somebody like you. I am out.</p>
+            <p>...</p>
+            <p>DONALD: Oh my god, that was just a dream. </p>
+            <p>MELANIA: What are you talking about?</p>
+            <p>DONALD: I was running against Barack Obama and supposedly lost 538 electoral votes to 0, and I thought you were about to divorce me.</p>
+            <p>MELANIA: You were running for President? Are you for real? You got your TV gig, and you worked for Mitt Romney didn’t you? Barack won the election. If you want to run, you will need to wait until 2016.</p>
+            <p>DONALD: Yeah, yeah, I know. The media can say what they want, but I just want to be unpredictable okay?</p>
+            <p>MELANIA: Fair enough, babe. But for now, let’s enjoy our day. Let’s take a day off of Twitter for once.</p>			
+            </div>
+            `;	
+		} else if(quickstats[0] > 0  && quickstats[0] < 174 && aa[0].electoral_votes > 269 && aa[0].candidate == 16) { // Landslide Loss
+            swapEndingPlaylist(3);					
+            setImage("https://i.postimg.cc/wMnGjSZH/Screenshot-2026-06-30-132437.png");
+            return `    <div class="ending-slide">
+            <h3 class="endingtitle">MARCH 18, 2013</h3>
+            <h2 class="endingdate">WASHINGTON, DC</h2>
+            <p>REINCE PRIEBUS: When Republicans lost in November, it was a wakeup call. And in response, I initiated the most public and most comprehensive post-election review in the history of any national party. We wanted an assessment that was frank, thorough, and transparent. To get a fresh start, we had to be honest with ourselves and with our voters. We want to build our party. And we want to do it with bold strokes, to show that we’re up to the challenge, and we’re done with business as usual. Last week I received the growth and opportunities projects report and their 219 recommendations. As it makes clear, there is no one reason we lost. Actually, there is one. Donald Trump was the worst possible candidate we could’ve nominated in a very winnable year for us. We can’t move crazy far to the right, period. And we can’t alienate people.</p>
+            <p>Our report highlights the real urgency of connecting with minority communities. By the year 2050, we’ll be a majority/minority country. And in 2012, President Obama won a combined 90 percent of the votes of all minority groups. The RNC cannot and will not write off any demographic, community or region of this country. So here are some actions that we’re going to take. We will establish senior level advisory councils for Hispanic, African American and Asian Americans that will serve as working groups, to share best practices and have a constant dialogue in each community, alongside swearing-in citizenship teams to introduce new citizens to the GOP after naturalization ceremonies. We must talk regularly and openly with groups in which we have had minimal contact in the past: LULAC, the Urban League, the NAACP, NALEO, LA RAZA, and work with state parties and sister committees to build a recruitment program for minority candidates.</p>
+            <p>This is the only way we can win elections moving forward. If we can’t appeal to the minority communities, we have no shot. Donald Trump did exactly what the RNC didn’t want him or anyone to do, and that is alienate people with key constituencies. The Republican Party needs to take 2014 and 2016 and focus on how we can win. Once we’re a majority-minority country and we don’t take the necessary steps to appeal to these folks, the Republican conservative movement will cease to exist forever.</p>			
+            </div>
+            `; 	   
+        } else if(quickstats[0] > 173  && quickstats[0] < 269 && aa[0].electoral_votes > 269 && aa[0].candidate == 16) { // Loss		
+            swapEndingPlaylist(4);			
+            setImage("https://i.postimg.cc/YqmPsCLr/Screenshot-2026-06-30-132453.png");
+            return `    <div class="ending-slide">
+            <h3 class="endingtitle">THEY WERE RIGHT AFTER ALL</h3>
+            <p>Everybody knew it. The President knew it. Even your advisors knew it. Especially after that damn Billy Bush tape came out. That you were never going to win this election. Obviously you didn’t think that, and maybe the Democrats rigged it. But nonetheless, you lost this election and Barack Obama has won four more years. </p>
+            <p>The statement that Barack put out attacking you the day after the election has sent chills down your spine. He has chilled you ever since the Correspondent’s Dinner last year when he mocked you for the claims that he wasn’t born in America, and he has continued to mock you for what should be the greatest ideas known to mankind. How is it bad to build a wall on the Southern border? How is it bad to renegotiate our crappy trade deals? How is it bad to end these forever wars? We will never know. But the truth is, the establishment hated you and never thought you could ever win the presidency, let alone the Republican nomination, and you have just taken a nosedive in support since the Access Hollywood tape came out. </p>
+            <p>Your wife has told you to never run for President or any elected office again, because you will never stand a chance to win. If you want to start a news station or go back to reality TV, that is definitely on the table for you. Many wonder how your supporters will act when the election is actually being certified though. But hey, you at least did better in the Electoral College than John McCain did four years ago.</p>			
+            </div>
+            `;	   
+	    } else if(quickstats[0] > 269 && quickstats[0] < 356 && aa[0].electoral_votes > 269 && aa[0].candidate == 17) { // Win
+            ctsAchievement("MAGA"); 			
+            swapEndingPlaylist(5);		
+            setImage("https://i.postimg.cc/mgfnfW7w/Screenshot-2026-06-30-132503.png");
+            return `    <div class="ending-slide">
+            <h3 class="endingtitle">BARACK, YOU'RE FIRED</h3>
+            <p>President Donald J. Trump? Who would’ve seen you hold such a title? The pundits and the media sure didn’t. Quite frankly, you yourself didn’t see it happening until you saw how big of a mess the country was in. The pundits are calling this election “1948 on steroids”, as you defeated an incumbent President with no political experience whatsoever, when you’ve been down in the polls, a shit ton of bad media press, and hated by the Republican establishment. Obama internal polls suggested you would never win the Midwest, or Florida, or the Southwest. You have found your way to victory in a shocking fashion. But nonetheless, Barack Hussein Obama gives you a despondent concession call, and you just told him this is what happens when you mock me at the Correspondents’ Dinner. Grant Park in Chicago was ready for the re-coronation of its favorite son, but that just never came to be.</p>
+            <p>You have always stood by your mantra to never trust the polls, the pundits, or the establishment. Most people didn’t either, and this historic movement has won. But for now, it is time to truly Make America Great Again. Republicans still have control of the House, but the Senate is still in Democratic hands. You have a lot of convincing to do for your agenda to actually come to fruition, but you surely have plenty of time. Nobody really knows what to expect over the next four years, but liberals are sobbing and MAGA supporters are clamoring. MSNBC and The View are losing their shit right now, but so is Fox News in a positive fashion. If you don’t screw up badly, 2016 is yours. Crooked Hillary or even Barack Obama will be thrilled to challenge you.</p>		
+            </div>
+            `;    
+	    } else if(quickstats[0] > 355 && quickstats[0] < 538 && aa[0].electoral_votes > 269 && aa[0].candidate == 17) { // Landslide Win
+            ctsAchievement("MAGA"); 			
+			swapEndingPlaylist(6);		
+            setImage("https://i.postimg.cc/nLTSDsg7/Screenshot-2026-06-30-132513.png");
+            return `    <div class="ending-slide">
+            <h3 class="endingtitle">SORRY TO KEEP YOU WAITING FOLKS</h3>
+            <p>Complicated business. Complicated. I just received… a call from President Obama. Congratulating us, it’s about us, on this historic victory. I mean, it’s really historic, okay? Not only did we win this election, but we won it big league. In a landslide. Does it surprise me one bit? Absolutely not, absolutely not. The people of this great country are sick and tired of what has been happening for far too long. I will say, I do appreciate Barack’s service to this country, and I really, really wish Michelle and his family well, you’re fired. You have done so much bad to this country it’s unbelievable, and as somebody who has spent my entire life in business, I alone can and will fix it. Believe me.</p>
+            <p>With this incredible landslide, we have the biggest political mandate in a generation, and we have quite frankly created the greatest political movement in the history of our country. Now it is time to execute. I have made many promises to all of you, and we are going to solve our nation’s biggest problems together. We are going to end the forever wars in the Middle East and defeat terrorism once and for all. We are going to build a great wall along the Southern border and keep illegal aliens out of our country. We are going to renegotiate the horrific trade deals that have plagued workers and hurt our economy for far too long, and we are going to put America First. We will Make America Wealthy Again. We will Make America Powerful Again. We will Make America Strong Again. We will Make America Safe Again. And together, when I am sworn in as the 45th President of the United States, We Will Make America Great Again.</p>	
+            </div>
+            `;    	   
+	    } else if(quickstats[0] == 538 && aa[0].electoral_votes > 269 && aa[0].candidate == 17) { // 538 EVs
+            ctsAchievement("MAGA"); 			
+            swapEndingPlaylist(7);		
+            setImage("https://i.postimg.cc/SRYg3gs8/Screenshot-2026-06-30-132522.png");
+            return `    <div class="ending-slide">
+            <h3 class="endingtitle">OBAMA FOUND INELIGIBLE TO BE PRESIDENT</h3>
+            <p>It has been proven that President Barack Obama has lied about his birth certificate, and that he was born in Kenya. How was this not proven until now? Obama loves to claim that he was born in Hawaii, but it turns out that is not the case?</p>
+            <p>Barack Obama was born in Kenya and was raised in Indonesia, before moving to the United States in high school. The Constitution says that you must be born in the United States to be President, and most people thought that the President was born here. However, that was proven false with the release of his actual birth certificate. </p>
+            <p>With this in mind, Barack Obama has been disqualified from the 2012 presidential race and you will become the 45th President of the United States unanimously. You are the only major candidate in the race who was actually legally eligible to be President, as you were born in New York City.</p>
+            <p>...</p>
+            <p>Hold on a minute. This birth certificate looks a little fishy. No. No. It can’t be. This is translated. From Russian?!? </p>
+            <p>It looks like the Russians rigged the election in your favor, by convincing people Obama was born in Kenya. And the American government believed it. How can this be happening? You are happy that you won the race, but my god was this a bombshell. </p>
+            <p>...</p>	
+            <p>You suddenly wake up from a long nap after a round of golf at Mar-a-Lago. Was this all a dream? Barack Obama is still President, he defeated Mitt Romney with 332 electoral votes and his real birth certificate showed he was born in Hawaii. What were you thinking in your long dream? If you ran against Obama in 2012 and his birth certificate was found to be false, that could’ve been your only path to victory. But you gotta wake up fast, you got a flight to catch. A new episode of The Apprentice is being filmed tomorrow.</p>	
+            </div>
+            `;     
+        }
+    } else { // Trump Doesn't Run
+        if (e.player_answers.includes(21000)) { // Mitt Romney
+            if (quickstats[0] > 269) {
+		        ctsAchievement("Big Bird");			
+                swapEndingPlaylist(8);		
+                setImage("https://i.postimg.cc/XNTWJhwX/Screenshot-2026-06-30-132533.png");
+                return `    <div class="ending-slide">
+                <h3 class="endingtitle">THE REPUBLICAN ESTABLISHMENT HAS WON</h3>
+                <p>The events at Amalie Arena in Tampa played out exactly as the pundits and general public expected: Mitt Romney has won with your support, against people like Newt Gingrich and Ron Paul. They’re calling it redemption for Mitt after he lost the 2008 primaries to John McCain, but he had a far worse running-mate in Congressman Paul Ryan. You became friendly with Mitt Romney, as he is a money guy like yourself and someone you called a smart, sharp guy who won’t let bad things happen to our country. </p>
+                <p>And Mitt succeeded. He defeated President Obama on the backs of the Republican forces against Obamacare, the disastrous foreign policy, and the terrible economy to become the first Mormon President of the United States. While you did not spend too much time on the campaign trail as Mitt didn’t want the bad press, you did work to get him elected and your work paid off. Mitt’s gotta prove he’s not a RINO though. If you truly want to run for President, you will have to wait until at least 2020 unless Mitt Romney is truly a disastrous president. The pundits say you will never run, but what do they know? But you don’t worry about the media too much. You already have the headlines on The Apprentice, and you can always build more casinos and golf courses. President-elect Romney stated in your congratulatory call that he would proudly support a new Trump casino at National Harbor, or even a Trump Tower in Salt Lake City. Nonetheless, you have a routine, as long as you want to stick with it.</p>		
+                </div>
+                `;   
+            } else if (quickstats[0] = 269) {
+		        ctsAchievement("Political Apprentice");			
+                swapEndingPlaylist(1);		
+                setImage("https://i.postimg.cc/7LM8QYc2/Screenshot-2026-06-30-112740.png");
+           	 	return `    <div class="ending-slide">
+            	<h3 class="endingtitle">i>THE POLITICAL APPRENTICE</i></h3>
+            	<h2 class="endingdate">JANUARY 4, 2013</h2>
+            	<p>Donald, this ain’t NBC okay? Politics is no reality TV. It is time to figure out who will be the next President of the United States. No candidate reached 270 electoral votes, the magic number to get elected. Therefore, we have a different process and Congress decides.</p>
+            	<p>The task is to get the House of Representatives to appoint Mitt Romney President for the next four years. The odds are pretty good, as each state gets one collective vote, and Republicans have the majority in the House. Mitt Romney is a baseline Republican all around, and it should be fairly easy to vote him in as a means to end the Obama administration.</p>
+            	<p>That was only the first task, okay? The second is to convince the Democrat-led Senate to push his running-mate Paul Ryan into the Vice Presidency. And unfortunately, Democrats have the Senate. If everything goes as expected, Joe Biden gets four more years. They just want to hold on to some degree of power. </p>
+            	<p>But all around, this is an extraordinary circumstance that hasn’t been seen in nearly two centuries. But Mitt has a chance to make your case, but so does the President. You wish both of them luck on this great, great endeavor. If successful, we will Make America Great Again. If not, we have four more years of bad deals, bad wars, and bad policies.</p>		
+            	</div>
+                `; 
+            } else {
+                swapEndingPlaylist(9);		
+                setImage("https://i.postimg.cc/d1pbhkTM/Screenshot-2026-06-30-132542.png");
+                return `    <div class="ending-slide">
+                <h3 class="endingtitle">THE REPUBLICAN ESTABLISHMENT LOSES AGAIN</h3>
+                <p>The events at Amalie Arena in Tampa played out exactly as the pundits and general public expected: Mitt Romney has won with your support, against people like Newt Gingrich and Ron Paul. They’re calling it redemption for Mitt after he lost the 2008 primaries to John McCain, but he had a far worse running-mate in Congressman Paul Ryan. You became friendly with Mitt Romney, as he is a money guy like yourself and someone you called a smart, sharp guy who won’t let bad things happen to our country.</p>
+                <p>However, the GOP momentum from two years ago did not stick. Mitt Romney, another establishmentarian Republican politician, lost - giving Obama four more years. The same people that push the same old policies are the biggest sellouts. That being said, Mitt Romney was just a bad candidate, okay? He has disparaged the great workers in this country by telling Detroit to go bankrupt, his 47% comment was a disgrace, and he has pledged the status quo of forever wars, bad deals, and putting illegal aliens first. </p>
+                <p>Despite the tough loss for the Republican Party, this gives you a massive opening going into 2016. People across the country are yearning for a fresh start, to drain the swamp, and truly Make America Great Again. Four more years of Obama will create an even bigger mess than there is now, and you might be the voice the people just might want to hear. They would rather see you over Crooked Hillary Clinton or Joe Biden, that’s for sure. Nonetheless, this country will be in the gutters in four years, and the people will blame Obama for it. Believe me.</p>
+                </div>
+                `;
+            }
+        } else if (e.player_answers.includes(21001)) { // Sarah Palin
+            if (quickstats[0] > 269) {
+		        ctsAchievement("Moose A. Moose"); 			
+                swapEndingPlaylist(10);		
+                setImage("https://i.postimg.cc/7Y8vDzkY/Screenshot-2026-06-30-132551.png");
+                return `    <div class="ending-slide">
+                <h3 class="endingtitle">NOT SO FAST, CROOKED HILLARY</h3>
+                <p>Hillary Clinton was going to be the first Female President at some point, whether it was in 2008 or 2016. But no. We did not let that happen. We got the greatest Madame President in the history of our country, who recovered from a disastrous VP campaign four years ago to defeat Barack Hussein Obama. Sarah Palin, a lady tough as nails, has been elected President, and she credits you in her victory speech for convincing her to run after being on the fence. As a reward for your loyalty and attack-dog persona, she picked you as her running-mate. With this historic victory, now you are Vice President-elect of the United States, wouldn’t you believe it? The crooked pundits did not see this coming, and quite frankly, nor did most of the country. But nonetheless, you and Sarah have made history together: A female President and a reality star Vice President. A despondent Joe Biden called you to concede the race, as did the President to Sarah. </p>
+                <p>Now it is time for you to realize what the job of Vice President truly means, but your advisors and friends in Congress will steer you in the right direction. You aren’t on reality TV anymore, which could be a hard task for you. But nonetheless, you have plenty of ideas that you incorporated into the Palin campaign, and now it is up to Sarah, with your help, to truly Make America Great Again. The people believe in this ticket, a truly natural ticket praised by people who are sick and tired of what has been happening in this country for far too long.</p>		
+                </div>
+                `; 
+            } else if (quickstats[0] = 269) {
+		        ctsAchievement("Political Apprentice");			
+                swapEndingPlaylist(1);		
+                setImage("https://i.postimg.cc/7LM8QYc2/Screenshot-2026-06-30-112740.png");
+           	 	return `    <div class="ending-slide">
+            	<h3 class="endingtitle">i>THE POLITICAL APPRENTICE</i></h3>
+            	<h2 class="endingdate">JANUARY 4, 2013</h2>
+            	<p>Donald, this ain’t NBC okay? Politics is no reality TV. It is time to figure out who will be the next President of the United States. No candidate reached 270 electoral votes, the magic number to get elected. Therefore, we have a different process and Congress decides.</p>
+            	<p>The task is to get the House of Representatives to appoint Sarah Palin President for the next four years. The odds are pretty good, as each state gets one collective vote, and Republicans have the majority in the House. Sarah Palin is by no means an establishment Republican, and many Republicans hate her. However, they will likely vote for her to stop the Obama administration.</p>
+            	<p>That was only the first task, okay? The second is to convince the Democrat-led Senate to push you, as her running-mate, into the Vice Presidency. And unfortunately, Democrats have the Senate. And they hate you bigly. If everything goes as expected, Joe Biden gets four more years. They just want to hold on to some degree of power. </p>
+            	<p>But all around, this is an extraordinary circumstance that hasn’t been seen in nearly two centuries. But Sarah has a chance to make your case, but so does the President. You wish both of them luck on this great, great endeavor. If successful, we will Make America Great Again. If not, we have four more years of bad deals, bad wars, and bad policies.</p>	
+            	</div>
+                `;    
+            } else {
+                swapEndingPlaylist(9);		
+                setImage("https://i.postimg.cc/hP9kGGDY/Screenshot-2026-06-30-132559.png");
+                return `    <div class="ending-slide">
+                <h3 class="endingtitle">THE PUNDITS WERE RIGHT AFTER ALL</h3>
+                <p>It’s a repeat of 2008. This can’t be happening. You put a lot of work into propelling Sarah Palin to the nomination after her ill-fated campaign with John McCain in 2008, and she even gave you the VP nod. However, you are shocked to find out Barack Obama somehow won again, and Sarah Palin lost again. Granted she didn’t do well in polls, and you told her to never trust the polls or the pundits saying she couldn’t pull it off. But nonetheless, the fake news was somehow correct.</p>
+                <p>Sarah Palin is in a familiar place, but was even closer than McCain to the presidency being at the top of the ticket. It just seems that her hard work in 2010 didn’t translate to 2012. This country is in an absolute mess right now, but the people just didn’t care. These lunatics probably thought that you and Sarah would make the country even worse. She did get a lot of bad press in both 2008 and 2012, and people don’t really want that again. But it’s more than likely America is just not ready for a female President, even on the Republican side.</p>
+                <p>As for you, Melania has told you to never run for President. After seeing Sarah Palin lose after losing with John McCain, she just thinks you can’t win in 2016 against Crooked Hillary or Joe Biden, regardless of how much peril America is in. You clearly have no momentum for 2016 anyways, at least that’s what the media says. But for now, you have a routine. You can build more casinos, play more golf at Mar-a-Lago, and maybe even return to The Apprentice. It is presumed, however, that your political career is over.</p>	
+                </div>
+                `;
+            }
+        } else if (e.player_answers.includes(21002)) { // Chris Christie
+            if (quickstats[0] > 269) {
+                ctsAchievement("Sandy Cheeks");			
+                swapEndingPlaylist(11);		
+                setImage("https://i.postimg.cc/htsN937z/Screenshot-2026-06-30-132608.png");
+                return `    <div class="ending-slide">
+                <h3 class="endingtitle">THE GOLDEN BOY HAS DONE IT</h3>
+                <p>While you genuinely believed you could’ve defeated Barack Obama, you just didn’t feel the pundits could’ve trusted you. However, a dear friend of yours did the work for you. Someone who everybody thought could’ve done it: New Jersey Governor Chris Christie. He shares your persona, but is not as hardline on the core issues as you. He also doesn’t have the headlines that you do. That is the strategy for winning places like New Jersey. Whether or not Big Guy Chris was able to actually carry his home state doesn’t matter, because he won the presidency. A Republican governor from a blue state sounds familiar, doesn’t it? It sounds like Ronald Reagan. Albeit California was a different state during his time. Chris Christie is going to be the greatest Republican since Reagan, and maybe even greater. With Florida Senator Marco Rubio on his side, likely as a means to appeal to Latino voters, people who are sick and tired of what is happening are feeling excited about the future. Having people who can tell it like it is and can appeal to them personally.</p>
+                <p>You are satisfied with the results, even as you wish you were at this moment today. You are good friends with Chris Christie, although he doesn’t particularly love to talk about it. He’s just worried about the bad press, but he’ll get over it eventually. You call to congratulate him, and he acknowledges and pledges to endorse you for a hypothetical run for New York Governor in 2014. You tell him the media just loves to talk about a political Trump. But for now, you’re occupied with The Apprentice with no signs of stopping anytime soon. Maybe a casino at National Harbor is in the cards for you?</p>	
+                </div>
+                `;   
+            } else if (quickstats[0] = 269) {
+		        ctsAchievement("Political Apprentice");			
+                swapEndingPlaylist(1);		
+                setImage("https://i.postimg.cc/7LM8QYc2/Screenshot-2026-06-30-112740.png");
+           	 	return `    <div class="ending-slide">
+            	<h3 class="endingtitle">i>THE POLITICAL APPRENTICE</i></h3>
+            	<h2 class="endingdate">JANUARY 4, 2013</h2>
+            	<p>Donald, this ain’t NBC okay? Politics is no reality TV. It is time to figure out who will be the next President of the United States. No candidate reached 270 electoral votes, the magic number to get elected. Therefore, we have a different process and Congress decides.</p>
+            	<p>The task is to get the House of Representatives to appoint Chris Christie President for the next four years. The odds are pretty good, as each state gets one collective vote, and Republicans have the majority in the House. Chris Christie is the golden Republican, and it should be fairly easy to vote him in as a means to end the Obama administration.</p>
+            	<p>That was only the first task, okay? The second is to convince the Democrat-led Senate to push his running-mate Marco Rubio into the Vice Presidency. And unfortunately, Democrats have the Senate. If everything goes as expected, Joe Biden gets four more years. They just want to hold on to some degree of power. </p>
+            	<p>But all around, this is an extraordinary circumstance that hasn’t been seen in nearly two centuries. But Chris has a chance to make your case, but so does the President. You wish both of them luck on this great, great endeavor. If successful, we will Make America Great Again. If not, we have four more years of bad deals, bad wars, and bad policies.</p>	
+            	</div>
+                `;    
+            } else {
+                swapEndingPlaylist(9);		
+                setImage("https://i.postimg.cc/nLw5Wj2j/Screenshot-2026-06-30-132616.png");
+                return `    <div class="ending-slide">
+                <h3 class="endingtitle">THE GOLDEN BOY HAS RUSTED</h3>
+                <p>The image that you see killed Christie’s campaign. This guy is a traitor, why would he even praise our horrific President? Sure, these are extraneous circumstances, but that should not excuse this behavior by your long-time friend. Chris thought he just wasn’t ready to run for President, but after you convinced him, he changed his mind. He’s got a bombastic persona like yourself, but was thought to have spoken to people across all political spectrums. However, it just never came to pass. Maybe his persona turned off enough independents? This guy, one hell of a guy, was supposed to win until he made the decision to hug his own opponent. He was the golden boy to defeat Obama, as someone who can win in blue states and win over independents tired of the nonsense in this country. However, the golden boy has rusted. Even with the golden Vice Presidential nominee in Senator Marco Rubio. That was supposed to be a slam dunk ticket for the Republicans after the big Tea Party wave.</p>
+                <p>Despite the tough loss for the Republican Party, this gives you a massive opening going into 2016. People across the country are yearning for a fresh start, to drain the swamp, and truly Make America Great Again. You have all the momentum you could ask for in 2016 to avenge your primary loss and prove to the establishment that you can win and should be trusted to defeat - most likely, Crooked Hillary Clinton or Joe Biden. This country will be in the gutters in four years, and the people will blame Obama for it. Believe me.</p>	
+                </div>
+                `; 
+            }
+        } else if (e.player_answers.includes(21003)) { // Lose Primary
+            if (quickstats[0] > 269) {
+		        ctsAchievement("Big Bird");	
+                swapEndingPlaylist(8);		
+                setImage("https://i.postimg.cc/XNTWJhwX/Screenshot-2026-06-30-132533.png");
+                return `    <div class="ending-slide">
+                <h3 class="endingtitle">THE REPUBLICAN ESTABLISHMENT HAS WON</h3>
+                <p>The events at Amalie Arena in Tampa played out exactly as the pundits and general public expected: You lost the Republican nomination and Mitt Romney has won it. They’re calling it redemption for Mitt after he lost the 2008 primaries to John McCain, but he had a far worse running-mate in Congressman Paul Ryan. You eventually became friendly with Mitt Romney, as he is a money guy like yourself and someone you called a smart, sharp guy who won’t let bad things happen to our country. </p>
+                <p>And Mitt succeeded. He defeated President Obama on the backs of the Republican forces against Obamacare, the disastrous foreign policy, and the terrible economy to become the first Mormon President of the United States. While you did not spend too much time on the campaign trail as Mitt didn’t want the bad press, you did work to get him elected and your work paid off. Mitt’s gotta prove he’s not a RINO though. As for you, your political career is on the backburner. You won’t be able to run for President again until at least 2020 unless Mitt Romney is truly a disastrous president. The pundits say you will never run again, but what do they know? But you don’t worry about the media too much. You already have the headlines on The Apprentice, and you can always build more casinos and golf courses. President-elect Romney stated in your congratulatory call that he would proudly support a new Trump casino at National Harbor, or even a Trump Tower in Salt Lake City. Nonetheless, you have a routine, as long as you want to stick with it.</p>		
+                </div>			
+                `;
+            } else if (quickstats[0] = 269) {
+		        ctsAchievement("Political Apprentice");			
+                swapEndingPlaylist(1);		
+                setImage("https://i.postimg.cc/7LM8QYc2/Screenshot-2026-06-30-112740.png");
+           	 	return `    <div class="ending-slide">
+            	<h3 class="endingtitle">i>THE POLITICAL APPRENTICE</i></h3>
+            	<h2 class="endingdate">JANUARY 4, 2013</h2>
+            	<p>Donald, this ain’t NBC okay? Politics is no reality TV. It is time to figure out who will be the next President of the United States. No candidate reached 270 electoral votes, the magic number to get elected. Therefore, we have a different process and Congress decides.</p>
+            	<p>The task is to get the House of Representatives to appoint Mitt Romney President for the next four years. The odds are pretty good, as each state gets one collective vote, and Republicans have the majority in the House. Mitt Romney is a baseline Republican all around, and it should be fairly easy to vote him in as a means to end the Obama administration.</p>
+            	<p>That was only the first task, okay? The second is to convince the Democrat-led Senate to push his running-mate Paul Ryan into the Vice Presidency. And unfortunately, Democrats have the Senate. If everything goes as expected, Joe Biden gets four more years. They just want to hold on to some degree of power. </p>
+            	<p>But all around, this is an extraordinary circumstance that hasn’t been seen in nearly two centuries. But Mitt has a chance to make your case, but so does the President. You wish both of them luck on this great, great endeavor. If successful, we will Make America Great Again. If not, we have four more years of bad deals, bad wars, and bad policies.</p>		
+            	</div>
+                `; 
+            } else {
+                swapEndingPlaylist(9);		
+                setImage("https://i.postimg.cc/d1pbhkTM/Screenshot-2026-06-30-132542.png");
+                return `    <div class="ending-slide">
+                <h3 class="endingtitle">THE REPUBLICAN ESTABLISHMENT LOSES AGAIN</h3>
+                <p>The events at Amalie Arena in Tampa played out exactly as the pundits and general public expected: You lost the Republican nomination and Mitt Romney has won it. They’re calling it redemption for Mitt after he lost the 2008 primaries to John McCain, but he had a far worse running-mate in Congressman Paul Ryan. You eventually became friendly with Mitt Romney, as he is a money guy like yourself and someone you called a smart, sharp guy who won’t let bad things happen to our country.</p>
+                <p>However, the GOP momentum from two years ago did not stick. Mitt Romney, another establishmentarian Republican politician, lost - giving Obama four more years. The same people that push the same old policies are the biggest sellouts. That being said, Mitt Romney was just a bad candidate, okay? He has disparaged the great workers in this country by telling Detroit to go bankrupt, his 47% comment was a disgrace, and he has pledged the status quo of forever wars, bad deals, and putting illegal aliens first.  </p>
+                <p>Despite the tough loss for the Republican Party, this gives you a massive opening going into 2016. People across the country are yearning for a fresh start, to drain the swamp, and truly Make America Great Again. You have all the momentum you could ask for in 2016 to avenge your primary loss and prove to the establishment that you can win and should be trusted to defeat - most likely, Crooked Hillary Clinton or Joe Biden. This country will be in the gutters in four years, and the people will blame Obama for it. Believe me.</p>
+                </div>
+                    `;
+            }
+        }
+}
+}
 		
