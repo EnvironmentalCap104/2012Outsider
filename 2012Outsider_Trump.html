@@ -14585,9 +14585,9 @@ cyoAdventure = function (a) {
     	if ([397].includes(ans)) {
         primary += 3;
         console.log("Primary + 3\nPrimary:", primary);
-
+	}
 	// Trump proves the pundits right
-	if (ans === 85) {
+	if ([85].includes(ans)) {
         campaignTrail_temp.questions_json[3] = tunnel(20000)
 		}
     if (campaignTrail_temp.question_number == 6 && ans != 21003) {        
@@ -14596,29 +14596,28 @@ cyoAdventure = function (a) {
 
 		
 	// Trump proves the pundits right
-    	if (ans === 21000) {
+    	if ([21000].includes(ans)) {
         campaignTrail_temp.candidate_json[1]["fields"].first_name = "Mitt";
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Romney";
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/9/94/Mitt_Romney_by_Gage_Skidmore_8.jpg/250px-Mitt_Romney_by_Gage_Skidmore_8.jpg";
         campaignTrail_temp.question_number = 31;
 		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#FF0000";
     }
-	if (ans === 21001) {
+		if ([21001].includes(ans)) {
         campaignTrail_temp.candidate_json[1]["fields"].first_name = "Sarah";
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Palin";
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://media.ktoo.org/2013/05/sarah-palin-gage-skidmore.jpg";
         campaignTrail_temp.question_number = 31;
 		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#fe2a2a";
     }
-    	if (ans === 21002) {
+    	if ([21002].includes(ans)) {
         campaignTrail_temp.candidate_json[1]["fields"].first_name = "Chris";
         campaignTrail_temp.candidate_json[1]["fields"].last_name = "Christie";
         campaignTrail_temp.candidate_json[1]["fields"].image_url = "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Chris_Christie_2015_crop.jpg/250px-Chris_Christie_2015_crop.jpg";
         campaignTrail_temp.question_number = 31;
 		campaignTrail_temp.candidate_json[1]["fields"].color_hex = "#bf3131";
     }
-
-    }		
+		
 	if ([391, 392].includes(ans)) {
         e.election_json[0].fields.has_visits = 0;
     }
@@ -14859,7 +14858,7 @@ endingPicker = (out, totv, aa, quickstats) => {
             swapEndingPlaylist(1);
             setImage("https://i.postimg.cc/7LM8QYc2/Screenshot-2026-06-30-112740.png");
             return `    <div class="ending-slide">
-            <h3 class="endingtitle">i>THE POLITICAL APPRENTICE</i></h3>
+            <h3 class="endingtitle"><i>THE POLITICAL APPRENTICE</i></h3>
             <h2 class="endingdate">JANUARY 4, 2013</h2>
             <p>Donald, this ain’t NBC okay? Politics is no reality TV. It is time to figure out who will be the next President of the United States. No candidate reached 270 electoral votes, the magic number to get elected. Therefore, we have a different process and Congress decides.</p>
             <p>Your task is to get the House of Representatives to appoint you President for the next four years, and you seem to be in a good place for success. Each state gets one collective vote, and Republicans have the majority in the House. Anybody who was on the fence in the Republican establishment needs to be convinced to vote for you. If you can’t convince establishmentarian Republican congressmen to bend the knee for you, then you’re fired.</p>
@@ -14972,7 +14971,7 @@ endingPicker = (out, totv, aa, quickstats) => {
                 swapEndingPlaylist(1);		
                 setImage("https://i.postimg.cc/7LM8QYc2/Screenshot-2026-06-30-112740.png");
            	 	return `    <div class="ending-slide">
-            	<h3 class="endingtitle">i>THE POLITICAL APPRENTICE</i></h3>
+            	<h3 class="endingtitle"><i>THE POLITICAL APPRENTICE</i></h3>
             	<h2 class="endingdate">JANUARY 4, 2013</h2>
             	<p>Donald, this ain’t NBC okay? Politics is no reality TV. It is time to figure out who will be the next President of the United States. No candidate reached 270 electoral votes, the magic number to get elected. Therefore, we have a different process and Congress decides.</p>
             	<p>The task is to get the House of Representatives to appoint Mitt Romney President for the next four years. The odds are pretty good, as each state gets one collective vote, and Republicans have the majority in the House. Mitt Romney is a baseline Republican all around, and it should be fairly easy to vote him in as a means to end the Obama administration.</p>
@@ -15007,7 +15006,7 @@ endingPicker = (out, totv, aa, quickstats) => {
                 swapEndingPlaylist(1);		
                 setImage("https://i.postimg.cc/7LM8QYc2/Screenshot-2026-06-30-112740.png");
            	 	return `    <div class="ending-slide">
-            	<h3 class="endingtitle">i>THE POLITICAL APPRENTICE</i></h3>
+            	<h3 class="endingtitle"><i>THE POLITICAL APPRENTICE</i></h3>
             	<h2 class="endingdate">JANUARY 4, 2013</h2>
             	<p>Donald, this ain’t NBC okay? Politics is no reality TV. It is time to figure out who will be the next President of the United States. No candidate reached 270 electoral votes, the magic number to get elected. Therefore, we have a different process and Congress decides.</p>
             	<p>The task is to get the House of Representatives to appoint Sarah Palin President for the next four years. The odds are pretty good, as each state gets one collective vote, and Republicans have the majority in the House. Sarah Palin is by no means an establishment Republican, and many Republicans hate her. However, they will likely vote for her to stop the Obama administration.</p>
@@ -15042,7 +15041,7 @@ endingPicker = (out, totv, aa, quickstats) => {
                 swapEndingPlaylist(1);		
                 setImage("https://i.postimg.cc/7LM8QYc2/Screenshot-2026-06-30-112740.png");
            	 	return `    <div class="ending-slide">
-            	<h3 class="endingtitle">i>THE POLITICAL APPRENTICE</i></h3>
+            	<h3 class="endingtitle"><i>THE POLITICAL APPRENTICE</i></h3>
             	<h2 class="endingdate">JANUARY 4, 2013</h2>
             	<p>Donald, this ain’t NBC okay? Politics is no reality TV. It is time to figure out who will be the next President of the United States. No candidate reached 270 electoral votes, the magic number to get elected. Therefore, we have a different process and Congress decides.</p>
             	<p>The task is to get the House of Representatives to appoint Chris Christie President for the next four years. The odds are pretty good, as each state gets one collective vote, and Republicans have the majority in the House. Chris Christie is the golden Republican, and it should be fairly easy to vote him in as a means to end the Obama administration.</p>
@@ -15076,7 +15075,7 @@ endingPicker = (out, totv, aa, quickstats) => {
                 swapEndingPlaylist(1);		
                 setImage("https://i.postimg.cc/7LM8QYc2/Screenshot-2026-06-30-112740.png");
            	 	return `    <div class="ending-slide">
-            	<h3 class="endingtitle">i>THE POLITICAL APPRENTICE</i></h3>
+            	<h3 class="endingtitle"><i>THE POLITICAL APPRENTICE</i></h3>
             	<h2 class="endingdate">JANUARY 4, 2013</h2>
             	<p>Donald, this ain’t NBC okay? Politics is no reality TV. It is time to figure out who will be the next President of the United States. No candidate reached 270 electoral votes, the magic number to get elected. Therefore, we have a different process and Congress decides.</p>
             	<p>The task is to get the House of Representatives to appoint Mitt Romney President for the next four years. The odds are pretty good, as each state gets one collective vote, and Republicans have the majority in the House. Mitt Romney is a baseline Republican all around, and it should be fairly easy to vote him in as a means to end the Obama administration.</p>
