@@ -45,7 +45,7 @@ campaignTrail_temp.questions_json = [
         "model": "campaign_trail.question",
         "pk": 7,
         "fields": {
-            "description": "<i>(August 30th, 2012)</i> Donald J. Trump accepting the Republican nomination for President of the United States? Who would’ve imagined this outcome even at the beginning of the year? Nonetheless, after a long primary campaign, you have secured the nomination at the RNC in Tampa. What type of speech will you deliver to the American people as you accept the nomination?"
+            "description": "Placeholder Convention Question"
         }
     },
     {
@@ -376,7 +376,14 @@ campaignTrail_temp.questions_json = [
         "fields": {
             "description": "Even though your immigration rhetoric may steer some Latinos away from your campaign, Marco Rubio has asked you to find other ways to appeal to the demographic. There are other issues they agree with Republicans on that could convince them to look past the immigration issue. How do you do it?"
         }
-    }
+    },
+    {
+        "model": "campaign_trail.question",
+        "pk": 20050,
+        "fields": {
+            "description": "<i>(August 30th, 2012)</i> Donald J. Trump accepting the Republican nomination for President of the United States? Who would’ve imagined this outcome even at the beginning of the year? Nonetheless, after a long primary campaign, you have secured the nomination at the RNC in Tampa. What type of speech will you deliver to the American people as you accept the nomination?"
+        }
+    },
 ];
 
 campaignTrail_temp.answers_json = [
@@ -1659,7 +1666,39 @@ campaignTrail_temp.answers_json = [
             "question": 20021,
             "description": "Well they have to agree that you gotta come into our country legally, am I right? The Hispanic community is absolutely beautiful, I really mean that. But only if they play by the rules."
         }
-    }
+    },
+    {
+        "model": "campaign_trail.answer",
+        "pk": 21500,
+        "fields": {
+            "question": 20050,
+            "description": "Your country is in an absolute mess right now, and we are going to fix it together. Together as one people, one nation, and one beautiful movement, we will Make America Proud Again. We will Make America Strong Again. We will Make America Wealthy Again. We will Make America Safe Again. And We Will Make America Great Again."
+        }
+    },
+    {
+        "model": "campaign_trail.answer",
+        "pk": 21501,
+        "fields": {
+            "question": 20050,
+            "description": "I don’t think the Republican establishment really likes me, but that’s okay. I will make a beautiful speech that appeals specifically to them. We gotta mention the red-meat, believe me. Talk about the gays, the taxes, the guns, the beautiful babies, and especially Crazy Barack."
+        }
+    },
+    {
+        "model": "campaign_trail.answer",
+        "pk": 21502,
+        "fields": {
+            "question": 20050,
+            "description": "Our president is a total disgrace, and he will lose in a LANDSLIDE. Our border is a disaster. Our economy is a disaster. Our foreign policy is a disaster. And I still have doubts over his legitimacy. It is time to make a change and truly Make America Great Again."
+        }
+    },
+    {
+        "model": "campaign_trail.answer",
+        "pk": 21503,
+        "fields": {
+            "question": 20050,
+            "description": "The central focus of this great campaign is putting America First. We will keep illegal aliens out of our country through the greatest border wall known to mankind. We will renegotiate the disastrous trade deals we’ve gotten involved in for many years. And last but not least, we will defeat terrorism and end the forever wars. Believe me."
+        }
+    },
 ];
 
 campaignTrail_temp.states_json = [
@@ -7662,7 +7701,7 @@ campaignTrail_temp.answer_score_global_json = [
         "model": "campaign_trail.answer_score_global",
         "pk": 9,
         "fields": {
-            "answer": 25,
+            "answer": 21500,
             "candidate": 17,
             "affected_candidate": 17,
             "global_multiplier": 0.035
@@ -8062,7 +8101,7 @@ campaignTrail_temp.answer_score_global_json = [
         "model": "campaign_trail.answer_score_global",
         "pk": 309,
         "fields": {
-            "answer": 28,
+            "answer": 21503,
             "candidate": 17,
             "affected_candidate": 17,
             "global_multiplier": 0.02
@@ -8332,7 +8371,7 @@ campaignTrail_temp.answer_score_global_json = [
         "model": "campaign_trail.answer_score_global",
         "pk": 1488,
         "fields": {
-            "answer": 26,
+            "answer": 21501,
             "candidate": 17,
             "affected_candidate": 17,
             "global_multiplier": 0.01
@@ -8342,7 +8381,7 @@ campaignTrail_temp.answer_score_global_json = [
         "model": "campaign_trail.answer_score_global",
         "pk": 1497,
         "fields": {
-            "answer": 26,
+            "answer": 21501,
             "candidate": 17,
             "affected_candidate": 18,
             "global_multiplier": -0.05
@@ -8392,7 +8431,7 @@ campaignTrail_temp.answer_score_global_json = [
         "model": "campaign_trail.answer_score_global",
         "pk": 1517,
         "fields": {
-            "answer": 269,
+            "answer": 215019,
             "candidate": 17,
             "affected_candidate": 17,
             "global_multiplier": -0.005
@@ -8402,7 +8441,7 @@ campaignTrail_temp.answer_score_global_json = [
         "model": "campaign_trail.answer_score_global",
         "pk": 1521,
         "fields": {
-            "answer": 268,
+            "answer": 215018,
             "candidate": 17,
             "affected_candidate": 17,
             "global_multiplier": -0.06
@@ -9435,7 +9474,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "model": "campaign_trail.answer_score_issue",
         "pk": 24,
         "fields": {
-            "answer": 25,
+            "answer": 21500,
             "issue": 1328,
             "issue_score": -0.8,
             "issue_importance": 5
@@ -9445,7 +9484,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "model": "campaign_trail.answer_score_issue",
         "pk": 25,
         "fields": {
-            "answer": 25,
+            "answer": 21500,
             "issue": 4,
             "issue_score": -0.35,
             "issue_importance": 5
@@ -9455,7 +9494,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "model": "campaign_trail.answer_score_issue",
         "pk": 26,
         "fields": {
-            "answer": 26,
+            "answer": 21501,
             "issue": 4,
             "issue_score": -0.65,
             "issue_importance": 5
@@ -9465,7 +9504,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "model": "campaign_trail.answer_score_issue",
         "pk": 27,
         "fields": {
-            "answer": 28,
+            "answer": 21503,
             "issue": 5,
             "issue_score": -0.75,
             "issue_importance": 5
@@ -10022,7 +10061,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "model": "campaign_trail.answer_score_issue",
         "pk": 1483,
         "fields": {
-            "answer": 25,
+            "answer": 21500,
             "issue": 1,
             "issue_score": -0.4,
             "issue_importance": 5,
@@ -10036,7 +10075,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "model": "campaign_trail.answer_score_issue",
         "pk": 1484,
         "fields": {
-            "answer": 25,
+            "answer": 21500,
             "issue": 2,
             "issue_score": -0.6,
             "issue_importance": 5,
@@ -10050,7 +10089,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "model": "campaign_trail.answer_score_issue",
         "pk": 1485,
         "fields": {
-            "answer": 25,
+            "answer": 21500,
             "issue": 3,
             "issue_score": 0,
             "issue_importance": 5,
@@ -10064,7 +10103,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "model": "campaign_trail.answer_score_issue",
         "pk": 1486,
         "fields": {
-            "answer": 25,
+            "answer": 21500,
             "issue": 5,
             "issue_score": -0.75,
             "issue_importance": 5,
@@ -10078,7 +10117,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "model": "campaign_trail.answer_score_issue",
         "pk": 1489,
         "fields": {
-            "answer": 26,
+            "answer": 21501,
             "issue": 1,
             "issue_score": -0.55,
             "issue_importance": 5,
@@ -10092,7 +10131,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "model": "campaign_trail.answer_score_issue",
         "pk": 1490,
         "fields": {
-            "answer": 26,
+            "answer": 21501,
             "issue": 5,
             "issue_score": -0.8,
             "issue_importance": 5,
@@ -10106,7 +10145,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "model": "campaign_trail.answer_score_issue",
         "pk": 1493,
         "fields": {
-            "answer": 27,
+            "answer": 21502,
             "issue": 1,
             "issue_score": -0.55,
             "issue_importance": 5,
@@ -10120,7 +10159,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "model": "campaign_trail.answer_score_issue",
         "pk": 1494,
         "fields": {
-            "answer": 27,
+            "answer": 21502,
             "issue": 2,
             "issue_score": -0.6,
             "issue_importance": 5,
@@ -10134,7 +10173,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "model": "campaign_trail.answer_score_issue",
         "pk": 1495,
         "fields": {
-            "answer": 27,
+            "answer": 21502,
             "issue": 5,
             "issue_score": -0.75,
             "issue_importance": 5,
@@ -10148,7 +10187,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "model": "campaign_trail.answer_score_issue",
         "pk": 1496,
         "fields": {
-            "answer": 27,
+            "answer": 21502,
             "issue": 3,
             "issue_score": 0.35,
             "issue_importance": 5,
@@ -10162,7 +10201,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "model": "campaign_trail.answer_score_issue",
         "pk": 1498,
         "fields": {
-            "answer": 28,
+            "answer": 21503,
             "issue": 1328,
             "issue_score": -0.65,
             "issue_importance": 5,
@@ -10176,7 +10215,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "model": "campaign_trail.answer_score_issue",
         "pk": 1499,
         "fields": {
-            "answer": 28,
+            "answer": 21503,
             "issue": 3,
             "issue_score": 0.1,
             "issue_importance": 5,
@@ -10232,7 +10271,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "model": "campaign_trail.answer_score_issue",
         "pk": 1519,
         "fields": {
-            "answer": 269,
+            "answer": 215019,
             "issue": 5,
             "issue_score": -0.45,
             "issue_importance": 5,
@@ -10246,7 +10285,7 @@ campaignTrail_temp.answer_score_issue_json = [
         "model": "campaign_trail.answer_score_issue",
         "pk": 1522,
         "fields": {
-            "answer": 268,
+            "answer": 215018,
             "issue": 5,
             "issue_score": -0.35,
             "issue_importance": 5,
@@ -15470,7 +15509,7 @@ campaignTrail_temp.answer_feedback_json = [
         "model": "campaign_trail.answer_feedback",
         "pk": 361,
         "fields": {
-            "answer": 27,
+            "answer": 21502,
             "candidate": 17,
             "answer_feedback": "You’ve always been known as an attack dog, so the speech is very characteristic of you. Just be sure to offer your plans for the future."
         }
@@ -15479,7 +15518,7 @@ campaignTrail_temp.answer_feedback_json = [
         "model": "campaign_trail.answer_feedback",
         "pk": 362,
         "fields": {
-            "answer": 28,
+            "answer": 21503,
             "candidate": 17,
             "answer_feedback": "Putting all three of your main campaign elements into one speech will certainly rattle the crowd at Amalie, and you are surely getting the ratings. Let’s just see how this evolves throughout the campaign."
         }
@@ -15515,7 +15554,7 @@ campaignTrail_temp.answer_feedback_json = [
         "model": "campaign_trail.answer_feedback",
         "pk": 424,
         "fields": {
-            "answer": 25,
+            "answer": 21500,
             "candidate": 17,
             "answer_feedback": "A unifying speech is what the party needs, even if it went a little long. You can hear the cheers all across Amalie Arena, and for once, you’re getting the ratings."
         }
@@ -15866,7 +15905,7 @@ campaignTrail_temp.answer_feedback_json = [
         "model": "campaign_trail.answer_feedback",
         "pk": 1487,
         "fields": {
-            "answer": 26,
+            "answer": 21501,
             "candidate": 17,
             "answer_feedback": "You do hear the cheers and you do get the ratings, but many in that arena were quite skeptical as to whether you will live up to the party platform. But who knows, maybe you really are a different Donald than just four years ago."
         }
@@ -15947,7 +15986,7 @@ campaignTrail_temp.answer_feedback_json = [
         "model": "campaign_trail.answer_feedback",
         "pk": 1518,
         "fields": {
-            "answer": 269,
+            "answer": 215019,
             "candidate": 17,
             "answer_feedback": "The Republicans can easily coalesce behind this viewpoint, at the expense of Latinos drifting towards Obama. But some sense a slight change in your tone."
         }
@@ -15956,7 +15995,7 @@ campaignTrail_temp.answer_feedback_json = [
         "model": "campaign_trail.answer_feedback",
         "pk": 1520,
         "fields": {
-            "answer": 268,
+            "answer": 215018,
             "candidate": 17,
             "answer_feedback": "Using the federalist argument may not be such a bad idea, but your base expected far more. Your party will still get the flak from Hispanic groups regardless of how you spin the issue."
         }
@@ -17000,6 +17039,8 @@ cyoAdventure = function (a) {
 	if ([85].includes(ans)) {
         campaignTrail_temp.questions_json[3] = tunnel(20000)
 		}
+		
+	// final eligibility is enforced inside vpSwitcher right before the VP screen renders.
     if (campaignTrail_temp.question_number == 6 && ans != 21003) {        
         window.setTimeout(e.vpSwitcher, 20)
     }
@@ -17040,7 +17081,7 @@ cyoAdventure = function (a) {
 
 // Lose the Primary in Q7
 	if (primary >= 4) { // Win
-    campaignTrail_temp.questions_json[6] = tunnel(7)
+    campaignTrail_temp.questions_json[6] = tunnel(20050)
 	} else { // Loss
 		campaignTrail_temp.questions_json[6] = tunnel(20001)
 	}
@@ -17201,7 +17242,7 @@ e.vpSwitcher = () => {
     })
 }			
 
-			// Endings
+// Endings
 campaignTrail_temp.multiple_endings = true;
 endingPicker = (out, totv, aa, quickstats) => {
 	
@@ -17347,7 +17388,7 @@ endingPicker = (out, totv, aa, quickstats) => {
             <p>With this incredible landslide, we have the biggest political mandate in a generation, and we have quite frankly created the greatest political movement in the history of our country. Now it is time to execute. I have made many promises to all of you, and we are going to solve our nation’s biggest problems together. We are going to end the forever wars in the Middle East and defeat terrorism once and for all. We are going to build a great wall along the Southern border and keep illegal aliens out of our country. We are going to renegotiate the horrific trade deals that have plagued workers and hurt our economy for far too long, and we are going to put America First. We will Make America Wealthy Again. We will Make America Powerful Again. We will Make America Strong Again. We will Make America Safe Again. And together, when I am sworn in as the 45th President of the United States, We Will Make America Great Again.</p>	
             </div>
             `;    	   
-	    } else if(quickstats[0] == 538 && aa[0].electoral_votes > 269 && aa[0].candidate == 17) { // 538 EVs
+	    } else if (quickstats[0] == 538 && aa[0].electoral_votes > 269 && aa[0].candidate == 17) { // 538 EVs
             ctsAchievement("MAGA"); 			
             swapEndingPlaylist(7);		
             setImage("https://i.postimg.cc/SRYg3gs8/Screenshot-2026-06-30-132522.png");
@@ -17376,7 +17417,17 @@ endingPicker = (out, totv, aa, quickstats) => {
                 <p>And Mitt succeeded. He defeated President Obama on the backs of the Republican forces against Obamacare, the disastrous foreign policy, and the terrible economy to become the first Mormon President of the United States. While you did not spend too much time on the campaign trail as Mitt didn’t want the bad press, you did work to get him elected and your work paid off. Mitt’s gotta prove he’s not a RINO though. If you truly want to run for President, you will have to wait until at least 2020 unless Mitt Romney is truly a disastrous president. The pundits say you will never run, but what do they know? But you don’t worry about the media too much. You already have the headlines on The Apprentice, and you can always build more casinos and golf courses. President-elect Romney stated in your congratulatory call that he would proudly support a new Trump casino at National Harbor, or even a Trump Tower in Salt Lake City. Nonetheless, you have a routine, as long as you want to stick with it.</p>		
                 </div>
                 `;   
-            } else if (quickstats[0] = 269) {
+            } else if (quickstats[0] < 269) {
+                swapEndingPlaylist(9);		
+                setImage("https://i.postimg.cc/d1pbhkTM/Screenshot-2026-06-30-132542.png");
+                return `    <div class="ending-slide">
+                <h3 class="endingtitle">THE REPUBLICAN ESTABLISHMENT LOSES AGAIN</h3>
+                <p>The events at Amalie Arena in Tampa played out exactly as the pundits and general public expected: Mitt Romney has won with your support, against people like Newt Gingrich and Ron Paul. They’re calling it redemption for Mitt after he lost the 2008 primaries to John McCain, but he had a far worse running-mate in Congressman Paul Ryan. You became friendly with Mitt Romney, as he is a money guy like yourself and someone you called a smart, sharp guy who won’t let bad things happen to our country.</p>
+                <p>However, the GOP momentum from two years ago did not stick. Mitt Romney, another establishmentarian Republican politician, lost - giving Obama four more years. The same people that push the same old policies are the biggest sellouts. That being said, Mitt Romney was just a bad candidate, okay? He has disparaged the great workers in this country by telling Detroit to go bankrupt, his 47% comment was a disgrace, and he has pledged the status quo of forever wars, bad deals, and putting illegal aliens first. </p>
+                <p>Despite the tough loss for the Republican Party, this gives you a massive opening going into 2016. People across the country are yearning for a fresh start, to drain the swamp, and truly Make America Great Again. Four more years of Obama will create an even bigger mess than there is now, and you might be the voice the people just might want to hear. They would rather see you over Crooked Hillary Clinton or Joe Biden, that’s for sure. Nonetheless, this country will be in the gutters in four years, and the people will blame Obama for it. Believe me.</p>
+                </div>
+                `;
+            } else {
 		        ctsAchievement("Political Apprentice");			
                 swapEndingPlaylist(1);		
                 setImage("https://i.postimg.cc/7LM8QYc2/Screenshot-2026-06-30-112740.png");
@@ -17389,17 +17440,7 @@ endingPicker = (out, totv, aa, quickstats) => {
             	<p>But all around, this is an extraordinary circumstance that hasn’t been seen in nearly two centuries. But Mitt has a chance to make your case, but so does the President. You wish both of them luck on this great, great endeavor. If successful, we will Make America Great Again. If not, we have four more years of bad deals, bad wars, and bad policies.</p>		
             	</div>
                 `; 
-            } else {
-                swapEndingPlaylist(9);		
-                setImage("https://i.postimg.cc/d1pbhkTM/Screenshot-2026-06-30-132542.png");
-                return `    <div class="ending-slide">
-                <h3 class="endingtitle">THE REPUBLICAN ESTABLISHMENT LOSES AGAIN</h3>
-                <p>The events at Amalie Arena in Tampa played out exactly as the pundits and general public expected: Mitt Romney has won with your support, against people like Newt Gingrich and Ron Paul. They’re calling it redemption for Mitt after he lost the 2008 primaries to John McCain, but he had a far worse running-mate in Congressman Paul Ryan. You became friendly with Mitt Romney, as he is a money guy like yourself and someone you called a smart, sharp guy who won’t let bad things happen to our country.</p>
-                <p>However, the GOP momentum from two years ago did not stick. Mitt Romney, another establishmentarian Republican politician, lost - giving Obama four more years. The same people that push the same old policies are the biggest sellouts. That being said, Mitt Romney was just a bad candidate, okay? He has disparaged the great workers in this country by telling Detroit to go bankrupt, his 47% comment was a disgrace, and he has pledged the status quo of forever wars, bad deals, and putting illegal aliens first. </p>
-                <p>Despite the tough loss for the Republican Party, this gives you a massive opening going into 2016. People across the country are yearning for a fresh start, to drain the swamp, and truly Make America Great Again. Four more years of Obama will create an even bigger mess than there is now, and you might be the voice the people just might want to hear. They would rather see you over Crooked Hillary Clinton or Joe Biden, that’s for sure. Nonetheless, this country will be in the gutters in four years, and the people will blame Obama for it. Believe me.</p>
-                </div>
-                `;
-            }
+			}
         } else if (e.player_answers.includes(21001)) { // Sarah Palin
             if (quickstats[0] > 269) {
 		        ctsAchievement("Moose A. Moose"); 			
@@ -17411,7 +17452,17 @@ endingPicker = (out, totv, aa, quickstats) => {
                 <p>Now it is time for you to realize what the job of Vice President truly means, but your advisors and friends in Congress will steer you in the right direction. You aren’t on reality TV anymore, which could be a hard task for you. But nonetheless, you have plenty of ideas that you incorporated into the Palin campaign, and now it is up to Sarah, with your help, to truly Make America Great Again. The people believe in this ticket, a truly natural ticket praised by people who are sick and tired of what has been happening in this country for far too long.</p>		
                 </div>
                 `; 
-            } else if (quickstats[0] = 269) {
+            } else if (quickstats[0] < 269) {
+                swapEndingPlaylist(9);		
+                setImage("https://i.postimg.cc/hP9kGGDY/Screenshot-2026-06-30-132559.png");
+                return `    <div class="ending-slide">
+                <h3 class="endingtitle">THE PUNDITS WERE RIGHT AFTER ALL</h3>
+                <p>It’s a repeat of 2008. This can’t be happening. You put a lot of work into propelling Sarah Palin to the nomination after her ill-fated campaign with John McCain in 2008, and she even gave you the VP nod. However, you are shocked to find out Barack Obama somehow won again, and Sarah Palin lost again. Granted she didn’t do well in polls, and you told her to never trust the polls or the pundits saying she couldn’t pull it off. But nonetheless, the fake news was somehow correct.</p>
+                <p>Sarah Palin is in a familiar place, but was even closer than McCain to the presidency being at the top of the ticket. It just seems that her hard work in 2010 didn’t translate to 2012. This country is in an absolute mess right now, but the people just didn’t care. These lunatics probably thought that you and Sarah would make the country even worse. She did get a lot of bad press in both 2008 and 2012, and people don’t really want that again. But it’s more than likely America is just not ready for a female President, even on the Republican side.</p>
+                <p>As for you, Melania has told you to never run for President. After seeing Sarah Palin lose after losing with John McCain, she just thinks you can’t win in 2016 against Crooked Hillary or Joe Biden, regardless of how much peril America is in. You clearly have no momentum for 2016 anyways, at least that’s what the media says. But for now, you have a routine. You can build more casinos, play more golf at Mar-a-Lago, and maybe even return to The Apprentice. It is presumed, however, that your political career is over.</p>	
+                </div>
+                `;  
+            } else {
 		        ctsAchievement("Political Apprentice");			
                 swapEndingPlaylist(1);		
                 setImage("https://i.postimg.cc/7LM8QYc2/Screenshot-2026-06-30-112740.png");
@@ -17423,18 +17474,8 @@ endingPicker = (out, totv, aa, quickstats) => {
             	<p>That was only the first task, okay? The second is to convince the Democrat-led Senate to push you, as her running-mate, into the Vice Presidency. And unfortunately, Democrats have the Senate. And they hate you bigly. If everything goes as expected, Joe Biden gets four more years. They just want to hold on to some degree of power. </p>
             	<p>But all around, this is an extraordinary circumstance that hasn’t been seen in nearly two centuries. But Sarah has a chance to make your case, but so does the President. You wish both of them luck on this great, great endeavor. If successful, we will Make America Great Again. If not, we have four more years of bad deals, bad wars, and bad policies.</p>	
             	</div>
-                `;    
-            } else {
-                swapEndingPlaylist(9);		
-                setImage("https://i.postimg.cc/hP9kGGDY/Screenshot-2026-06-30-132559.png");
-                return `    <div class="ending-slide">
-                <h3 class="endingtitle">THE PUNDITS WERE RIGHT AFTER ALL</h3>
-                <p>It’s a repeat of 2008. This can’t be happening. You put a lot of work into propelling Sarah Palin to the nomination after her ill-fated campaign with John McCain in 2008, and she even gave you the VP nod. However, you are shocked to find out Barack Obama somehow won again, and Sarah Palin lost again. Granted she didn’t do well in polls, and you told her to never trust the polls or the pundits saying she couldn’t pull it off. But nonetheless, the fake news was somehow correct.</p>
-                <p>Sarah Palin is in a familiar place, but was even closer than McCain to the presidency being at the top of the ticket. It just seems that her hard work in 2010 didn’t translate to 2012. This country is in an absolute mess right now, but the people just didn’t care. These lunatics probably thought that you and Sarah would make the country even worse. She did get a lot of bad press in both 2008 and 2012, and people don’t really want that again. But it’s more than likely America is just not ready for a female President, even on the Republican side.</p>
-                <p>As for you, Melania has told you to never run for President. After seeing Sarah Palin lose after losing with John McCain, she just thinks you can’t win in 2016 against Crooked Hillary or Joe Biden, regardless of how much peril America is in. You clearly have no momentum for 2016 anyways, at least that’s what the media says. But for now, you have a routine. You can build more casinos, play more golf at Mar-a-Lago, and maybe even return to The Apprentice. It is presumed, however, that your political career is over.</p>	
-                </div>
-                `;
-            }
+                `; 
+				}
         } else if (e.player_answers.includes(21002)) { // Chris Christie
             if (quickstats[0] > 269) {
                 ctsAchievement("Sandy Cheeks");			
@@ -17446,7 +17487,16 @@ endingPicker = (out, totv, aa, quickstats) => {
                 <p>You are satisfied with the results, even as you wish you were at this moment today. You are good friends with Chris Christie, although he doesn’t particularly love to talk about it. He’s just worried about the bad press, but he’ll get over it eventually. You call to congratulate him, and he acknowledges and pledges to endorse you for a hypothetical run for New York Governor in 2014. You tell him the media just loves to talk about a political Trump. But for now, you’re occupied with The Apprentice with no signs of stopping anytime soon. Maybe a casino at National Harbor is in the cards for you?</p>	
                 </div>
                 `;   
-            } else if (quickstats[0] = 269) {
+            } else if (quickstats[0] < 269) {
+                swapEndingPlaylist(9);		
+                setImage("https://i.postimg.cc/nLw5Wj2j/Screenshot-2026-06-30-132616.png");
+                return `    <div class="ending-slide">
+                <h3 class="endingtitle">THE GOLDEN BOY HAS RUSTED</h3>
+                <p>The image that you see killed Christie’s campaign. This guy is a traitor, why would he even praise our horrific President? Sure, these are extraneous circumstances, but that should not excuse this behavior by your long-time friend. Chris thought he just wasn’t ready to run for President, but after you convinced him, he changed his mind. He’s got a bombastic persona like yourself, but was thought to have spoken to people across all political spectrums. However, it just never came to pass. Maybe his persona turned off enough independents? This guy, one hell of a guy, was supposed to win until he made the decision to hug his own opponent. He was the golden boy to defeat Obama, as someone who can win in blue states and win over independents tired of the nonsense in this country. However, the golden boy has rusted. Even with the golden Vice Presidential nominee in Senator Marco Rubio. That was supposed to be a slam dunk ticket for the Republicans after the big Tea Party wave.</p>
+                <p>Despite the tough loss for the Republican Party, this gives you a massive opening going into 2016. People across the country are yearning for a fresh start, to drain the swamp, and truly Make America Great Again. You have all the momentum you could ask for in 2016 to avenge your primary loss and prove to the establishment that you can win and should be trusted to defeat - most likely, Crooked Hillary Clinton or Joe Biden. This country will be in the gutters in four years, and the people will blame Obama for it. Believe me.</p>	
+                </div>
+                `;    
+            } else {
 		        ctsAchievement("Political Apprentice");			
                 swapEndingPlaylist(1);		
                 setImage("https://i.postimg.cc/7LM8QYc2/Screenshot-2026-06-30-112740.png");
@@ -17458,15 +17508,6 @@ endingPicker = (out, totv, aa, quickstats) => {
             	<p>That was only the first task, okay? The second is to convince the Democrat-led Senate to push his running-mate Marco Rubio into the Vice Presidency. And unfortunately, Democrats have the Senate. If everything goes as expected, Joe Biden gets four more years. They just want to hold on to some degree of power. </p>
             	<p>But all around, this is an extraordinary circumstance that hasn’t been seen in nearly two centuries. But Chris has a chance to make your case, but so does the President. You wish both of them luck on this great, great endeavor. If successful, we will Make America Great Again. If not, we have four more years of bad deals, bad wars, and bad policies.</p>	
             	</div>
-                `;    
-            } else {
-                swapEndingPlaylist(9);		
-                setImage("https://i.postimg.cc/nLw5Wj2j/Screenshot-2026-06-30-132616.png");
-                return `    <div class="ending-slide">
-                <h3 class="endingtitle">THE GOLDEN BOY HAS RUSTED</h3>
-                <p>The image that you see killed Christie’s campaign. This guy is a traitor, why would he even praise our horrific President? Sure, these are extraneous circumstances, but that should not excuse this behavior by your long-time friend. Chris thought he just wasn’t ready to run for President, but after you convinced him, he changed his mind. He’s got a bombastic persona like yourself, but was thought to have spoken to people across all political spectrums. However, it just never came to pass. Maybe his persona turned off enough independents? This guy, one hell of a guy, was supposed to win until he made the decision to hug his own opponent. He was the golden boy to defeat Obama, as someone who can win in blue states and win over independents tired of the nonsense in this country. However, the golden boy has rusted. Even with the golden Vice Presidential nominee in Senator Marco Rubio. That was supposed to be a slam dunk ticket for the Republicans after the big Tea Party wave.</p>
-                <p>Despite the tough loss for the Republican Party, this gives you a massive opening going into 2016. People across the country are yearning for a fresh start, to drain the swamp, and truly Make America Great Again. You have all the momentum you could ask for in 2016 to avenge your primary loss and prove to the establishment that you can win and should be trusted to defeat - most likely, Crooked Hillary Clinton or Joe Biden. This country will be in the gutters in four years, and the people will blame Obama for it. Believe me.</p>	
-                </div>
                 `; 
             }
         } else if (e.player_answers.includes(21003)) { // Lose Primary
@@ -17480,7 +17521,17 @@ endingPicker = (out, totv, aa, quickstats) => {
                 <p>And Mitt succeeded. He defeated President Obama on the backs of the Republican forces against Obamacare, the disastrous foreign policy, and the terrible economy to become the first Mormon President of the United States. While you did not spend too much time on the campaign trail as Mitt didn’t want the bad press, you did work to get him elected and your work paid off. Mitt’s gotta prove he’s not a RINO though. As for you, your political career is on the backburner. You won’t be able to run for President again until at least 2020 unless Mitt Romney is truly a disastrous president. The pundits say you will never run again, but what do they know? But you don’t worry about the media too much. You already have the headlines on The Apprentice, and you can always build more casinos and golf courses. President-elect Romney stated in your congratulatory call that he would proudly support a new Trump casino at National Harbor, or even a Trump Tower in Salt Lake City. Nonetheless, you have a routine, as long as you want to stick with it.</p>		
                 </div>			
                 `;
-            } else if (quickstats[0] = 269) {
+            } else if (quickstats[0] < 269) {
+                swapEndingPlaylist(9);		
+                setImage("https://i.postimg.cc/d1pbhkTM/Screenshot-2026-06-30-132542.png");
+                return `    <div class="ending-slide">
+                <h3 class="endingtitle">THE REPUBLICAN ESTABLISHMENT LOSES AGAIN</h3>
+                <p>The events at Amalie Arena in Tampa played out exactly as the pundits and general public expected: You lost the Republican nomination and Mitt Romney has won it. They’re calling it redemption for Mitt after he lost the 2008 primaries to John McCain, but he had a far worse running-mate in Congressman Paul Ryan. You eventually became friendly with Mitt Romney, as he is a money guy like yourself and someone you called a smart, sharp guy who won’t let bad things happen to our country.</p>
+                <p>However, the GOP momentum from two years ago did not stick. Mitt Romney, another establishmentarian Republican politician, lost - giving Obama four more years. The same people that push the same old policies are the biggest sellouts. That being said, Mitt Romney was just a bad candidate, okay? He has disparaged the great workers in this country by telling Detroit to go bankrupt, his 47% comment was a disgrace, and he has pledged the status quo of forever wars, bad deals, and putting illegal aliens first.  </p>
+                <p>Despite the tough loss for the Republican Party, this gives you a massive opening going into 2016. People across the country are yearning for a fresh start, to drain the swamp, and truly Make America Great Again. You have all the momentum you could ask for in 2016 to avenge your primary loss and prove to the establishment that you can win and should be trusted to defeat - most likely, Crooked Hillary Clinton or Joe Biden. This country will be in the gutters in four years, and the people will blame Obama for it. Believe me.</p>
+                </div>
+                    `; 
+            } else {
 		        ctsAchievement("Political Apprentice");			
                 swapEndingPlaylist(1);		
                 setImage("https://i.postimg.cc/7LM8QYc2/Screenshot-2026-06-30-112740.png");
@@ -17492,17 +17543,7 @@ endingPicker = (out, totv, aa, quickstats) => {
             	<p>That was only the first task, okay? The second is to convince the Democrat-led Senate to push his running-mate Paul Ryan into the Vice Presidency. And unfortunately, Democrats have the Senate. If everything goes as expected, Joe Biden gets four more years. They just want to hold on to some degree of power. </p>
             	<p>But all around, this is an extraordinary circumstance that hasn’t been seen in nearly two centuries. But Mitt has a chance to make your case, but so does the President. You wish both of them luck on this great, great endeavor. If successful, we will Make America Great Again. If not, we have four more years of bad deals, bad wars, and bad policies.</p>		
             	</div>
-                `; 
-            } else {
-                swapEndingPlaylist(9);		
-                setImage("https://i.postimg.cc/d1pbhkTM/Screenshot-2026-06-30-132542.png");
-                return `    <div class="ending-slide">
-                <h3 class="endingtitle">THE REPUBLICAN ESTABLISHMENT LOSES AGAIN</h3>
-                <p>The events at Amalie Arena in Tampa played out exactly as the pundits and general public expected: You lost the Republican nomination and Mitt Romney has won it. They’re calling it redemption for Mitt after he lost the 2008 primaries to John McCain, but he had a far worse running-mate in Congressman Paul Ryan. You eventually became friendly with Mitt Romney, as he is a money guy like yourself and someone you called a smart, sharp guy who won’t let bad things happen to our country.</p>
-                <p>However, the GOP momentum from two years ago did not stick. Mitt Romney, another establishmentarian Republican politician, lost - giving Obama four more years. The same people that push the same old policies are the biggest sellouts. That being said, Mitt Romney was just a bad candidate, okay? He has disparaged the great workers in this country by telling Detroit to go bankrupt, his 47% comment was a disgrace, and he has pledged the status quo of forever wars, bad deals, and putting illegal aliens first.  </p>
-                <p>Despite the tough loss for the Republican Party, this gives you a massive opening going into 2016. People across the country are yearning for a fresh start, to drain the swamp, and truly Make America Great Again. You have all the momentum you could ask for in 2016 to avenge your primary loss and prove to the establishment that you can win and should be trusted to defeat - most likely, Crooked Hillary Clinton or Joe Biden. This country will be in the gutters in four years, and the people will blame Obama for it. Believe me.</p>
-                </div>
-                    `;
+                `;
             }
         }
 }
