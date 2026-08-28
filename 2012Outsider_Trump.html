@@ -234,7 +234,7 @@ campaignTrail_temp.questions_json = [
         "model": "campaign_trail.question",
         "pk": 20001,
         "fields": {
-            "description": "As expected, you decided not to run for President. However, there is a strong field out there, and many potential candidates are eager for your endorsement. Looking at the polls which doesn’t really matter, former Massachusetts Governor and CEO of Bain Capital Mitt Romney is the frontrunner. Newt Gingrich, Ron Paul, and even Sarah Palin are floating runs themselves. Who would be your ideal Republican candidate in 2012?"
+            "description": "(August 27th, 2012) The crooked establishment. They rigged it. The pundits are saying “you lost”. You watch in despair as the roll-call at Amalie Arena in Tampa hands Mormon Mitt the Republican nomination. They call you a joke, they call you unserious, they call you extreme, they say you can’t win, they all knew this would happen. But this can’t be happening…"
         }
     },
     {
@@ -1192,7 +1192,7 @@ campaignTrail_temp.answers_json = [
         "pk": 21003,
         "fields": {
             "question": 20001,
-            "description": "(August 27th, 2012) The crooked establishment. They rigged it. The pundits are saying “you lost”. You watch in despair as the roll-call at Amalie Arena in Tampa hands Mormon Mitt the Republican nomination. They call you a joke, they call you unserious, they call you extreme, they say you can’t win, they all knew this would happen. But this can’t be happening…"
+            "description": "The 2012 Republican Primaries were stolen, believe me. But the more I complain about it, the more the media and the pundits will go after me. But Mitt is a pretty tough guy, and he will definitely beat Barack HUSSEIN Obama. It’s time for a revolution."
         }
     },
     {
@@ -17076,8 +17076,9 @@ cyoAdventure = function (a) {
         e.election_json[0].fields.has_visits = 1
     }
 
-// Achievements
-
+	if (ans === 21500 || ans === 21501 || ans === 21502 || ans === 21503) {
+        TrumpRunning = 1;
+		}
 
 // Lose the Primary in Q7
 	if (primary >= 4) { // Win
